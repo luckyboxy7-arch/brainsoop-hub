@@ -19,7 +19,7 @@
 }
 *{box-sizing:border-box;margin:0;padding:0;}
 html{scroll-behavior:smooth;}
-body{font-family:'Noto Sans KR',sans-serif;background:var(--bg);color:var(--t1);font-size:17px;line-height:1.7;}
+body{font-family:'Noto Sans KR',sans-serif;background:var(--bg);color:var(--t1);font-size:16px;line-height:1.75;}
 body::before{content:'';position:fixed;inset:0;
   background:radial-gradient(ellipse 65% 45% at 15% 5%,rgba(88,69,232,.18) 0%,transparent 55%),
   radial-gradient(ellipse 45% 30% at 85% 85%,rgba(255,176,32,.08) 0%,transparent 55%);
@@ -31,8 +31,8 @@ body::before{content:'';position:fixed;inset:0;
 .sh-logo{display:flex;align-items:center;gap:12px;flex-shrink:0;}
 .sh-av{width:42px;height:42px;border-radius:50%;background:linear-gradient(135deg,var(--a200),var(--a100));display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:900;color:#1a0a00;flex-shrink:0;}
 .sh-title{font-size:22px;font-weight:900;color:#fff;letter-spacing:-.02em;line-height:1.2;}
-.sh-sub{font-size:12px;color:var(--p300);margin-top:2px;display:flex;gap:8px;flex-wrap:wrap;align-items:center;}
-.sh-badge{font-size:11px;font-weight:600;padding:2px 9px;border-radius:99px;}
+.sh-sub{font-size:13px;color:var(--p300);margin-top:2px;display:flex;gap:8px;flex-wrap:wrap;align-items:center;}
+.sh-badge{font-size:12px;font-weight:600;padding:2px 9px;border-radius:99px;}
 .sh-ba{background:rgba(255,80,80,.15);color:var(--r100);border:1px solid rgba(255,80,80,.28);}
 .sh-bc{background:rgba(255,176,32,.15);color:var(--a100);border:1px solid var(--bda);}
 .sh-bg{background:rgba(168,224,99,.1);color:var(--g100);border:1px solid rgba(168,224,99,.22);}
@@ -43,7 +43,7 @@ body::before{content:'';position:fixed;inset:0;
 .sh-tabs{max-width:1320px;margin:0 auto;padding:0 1.5rem;display:flex;gap:3px;overflow-x:auto;padding-bottom:0;border-top:1px solid rgba(123,111,255,.12);}
 .sh-tabs::-webkit-scrollbar{height:3px;}
 .sh-tabs::-webkit-scrollbar-thumb{background:var(--p500);border-radius:99px;}
-.stab{padding:10px 16px;font-size:13px;font-weight:600;cursor:pointer;color:var(--t2);border:none;background:transparent;transition:all .15s;white-space:nowrap;font-family:'Noto Sans KR',sans-serif;border-bottom:3px solid transparent;display:flex;align-items:center;gap:6px;flex-shrink:0;}
+.stab{padding:10px 16px;font-size:14px;font-weight:600;cursor:pointer;color:var(--t2);border:none;background:transparent;transition:all .15s;white-space:nowrap;font-family:'Noto Sans KR',sans-serif;border-bottom:3px solid transparent;display:flex;align-items:center;gap:6px;flex-shrink:0;}
 .stab i{font-size:13px;}
 .stab:hover{color:var(--p200);background:rgba(123,111,255,.08);}
 .stab.on{color:#fff;border-bottom-color:var(--a200);background:rgba(88,69,232,.12);}
@@ -51,13 +51,13 @@ body::before{content:'';position:fixed;inset:0;
 /* ── LAYOUT ── */
 .wrap{max-width:1320px;margin:0 auto;padding:1.75rem 1.5rem 4rem;position:relative;z-index:1;}
 section{scroll-margin-top:110px;margin-bottom:2.25rem;}
-.sec-label{font-size:12px;font-weight:700;color:var(--p400);letter-spacing:.08em;text-transform:uppercase;margin-bottom:12px;display:flex;align-items:center;gap:8px;}
+.sec-label{font-size:13px;font-weight:700;color:var(--p400);letter-spacing:.08em;text-transform:uppercase;margin-bottom:12px;display:flex;align-items:center;gap:8px;}
 .sec-label::after{content:'';flex:1;height:1px;background:linear-gradient(90deg,var(--bd2),transparent);}
 .sec-label i{font-size:13px;}
 
 /* ── CARD ── */
 .card{background:var(--card);border:1px solid var(--bd);border-radius:14px;padding:1.35rem;}
-.card-t{font-size:11px;font-weight:700;color:var(--p400);letter-spacing:.06em;text-transform:uppercase;margin-bottom:11px;display:flex;align-items:center;gap:6px;}
+.card-t{font-size:13px;font-weight:700;color:var(--p400);letter-spacing:.06em;text-transform:uppercase;margin-bottom:11px;display:flex;align-items:center;gap:6px;}
 .card-t i{font-size:13px;}
 
 /* ── KPI ── */
@@ -68,10 +68,10 @@ section{scroll-margin-top:110px;margin-bottom:2.25rem;}
 .kpi.a::before{background:linear-gradient(90deg,var(--a300),var(--a200));}
 .kpi.g::before{background:var(--g100);}
 .kpi.r::before{background:#E84040;}
-.kpi-l{font-size:14px;color:var(--t3);margin-bottom:4px;}
+.kpi-l{font-size:13px;color:var(--t3);margin-bottom:4px;}
 .kpi-v{font-size:24px;font-weight:700;letter-spacing:-.02em;color:var(--t1);}
 .kpi-s{font-size:13px;color:var(--t3);margin-top:3px;}
-.tag{display:inline-block;font-size:11px;padding:2px 8px;border-radius:99px;margin-top:5px;font-weight:600;}
+.tag{display:inline-block;font-size:12px;padding:2px 8px;border-radius:99px;margin-top:5px;font-weight:600;}
 .tag-up{background:rgba(59,109,17,.18);color:var(--g100);}
 .tag-dn{background:rgba(200,40,40,.15);color:var(--r100);}
 .tag-n{background:rgba(123,111,255,.18);color:var(--p200);}
@@ -84,10 +84,10 @@ section{scroll-margin-top:110px;margin-bottom:2.25rem;}
 
 /* ── TABLE ── */
 .tbl-wrap{overflow-x:auto;}
-table{width:100%;border-collapse:collapse;font-size:13px;}
+table{width:100%;border-collapse:collapse;font-size:14px;}
 thead tr{border-bottom:1px solid var(--bd2);}
-thead th{padding:8px 10px;color:var(--p400);font-weight:700;font-size:13px;letter-spacing:.04em;text-align:left;background:rgba(88,69,232,.07);}
-tbody td{padding:9px 10px;border-bottom:1px solid var(--bd);color:var(--t2);vertical-align:middle;font-size:14px;}
+thead th{padding:9px 11px;color:var(--p400);font-weight:700;font-size:14px;letter-spacing:.04em;text-align:left;background:rgba(88,69,232,.07);}
+tbody td{padding:10px 11px;border-bottom:1px solid var(--bd);color:var(--t2);vertical-align:middle;font-size:14px;}
 tbody tr:last-child td{border-bottom:none;}
 tbody tr:hover td{background:rgba(123,111,255,.05);}
 td.n{text-align:right;font-family:'DM Mono',monospace;font-size:12px;}
@@ -100,7 +100,7 @@ tr.ch-b{background:rgba(255,176,32,.04);}
 tr.ch-c{background:rgba(59,109,17,.04);}
 
 /* ── PILL ── */
-.pill{display:inline-block;font-size:11px;padding:3px 8px;border-radius:99px;font-weight:600;white-space:nowrap;}
+.pill{display:inline-block;font-size:13px;padding:3px 8px;border-radius:99px;font-weight:600;white-space:nowrap;}
 .pp{background:rgba(88,69,232,.2);color:var(--p200);}
 .pa{background:rgba(255,176,32,.18);color:var(--a100);}
 .pg{background:rgba(59,109,17,.2);color:var(--g100);}
@@ -134,18 +134,18 @@ tr.ch-c{background:rgba(59,109,17,.04);}
 
 /* ── LEGEND ── */
 .lgd{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:9px;}
-.lgd-i{display:flex;align-items:center;gap:5px;font-size:12px;color:var(--t3);}
+.lgd-i{display:flex;align-items:center;gap:5px;font-size:13px;color:var(--t3);}
 .lgd-dot{width:10px;height:10px;border-radius:2px;flex-shrink:0;}
 
 /* ── INFO ── */
 .info-g{display:grid;grid-template-columns:1fr 1fr;gap:3px 14px;}
-.info-row{display:flex;gap:8px;font-size:13px;padding:5px 0;border-bottom:1px solid var(--bd);}
+.info-row{display:flex;gap:8px;font-size:14px;padding:5px 0;border-bottom:1px solid var(--bd);}
 .info-k{color:var(--t3);flex-shrink:0;width:90px;}
 .info-v{color:var(--t2);}
 
 /* ── GOAL BAR ── */
 .goal-row{margin-bottom:12px;}
-.goal-lbl{display:flex;justify-content:space-between;font-size:12px;color:var(--t3);margin-bottom:5px;}
+.goal-lbl{display:flex;justify-content:space-between;font-size:13px;color:var(--t3);margin-bottom:5px;}
 .goal-lbl span:last-child{color:var(--t2);font-weight:600;}
 .goal-bg{background:rgba(123,111,255,.12);border-radius:99px;height:11px;overflow:hidden;}
 .goal-fill{height:100%;border-radius:99px;}
@@ -153,9 +153,9 @@ tr.ch-c{background:rgba(59,109,17,.04);}
 /* ── DIR ── */
 .dir-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:9px;}
 .dir{background:rgba(88,69,232,.07);border:1px solid rgba(88,69,232,.2);border-radius:10px;padding:.95rem 1.1rem;}
-.dir-n{font-size:11px;font-weight:700;color:var(--p400);margin-bottom:4px;}
-.dir-t{font-size:13px;font-weight:700;color:var(--t1);margin-bottom:5px;}
-.dir-d{font-size:12px;color:var(--t3);line-height:1.65;}
+.dir-n{font-size:13px;font-weight:700;color:var(--p400);margin-bottom:4px;}
+.dir-t{font-size:15px;font-weight:700;color:var(--t1);margin-bottom:5px;}
+.dir-d{font-size:13px;color:var(--t3);line-height:1.65;}
 
 /* ── SROW ── */
 .srow{display:flex;gap:9px;align-items:flex-start;padding:9px 11px;border-radius:8px;margin-bottom:6px;}
@@ -167,7 +167,7 @@ tr.ch-c{background:rgba(59,109,17,.04);}
 .srow.peak .srow-mo{color:var(--r100);}
 .srow.semi .srow-mo,.srow.now .srow-mo{color:var(--a100);}
 .srow.off .srow-mo{color:var(--t3);}
-.srow-d{font-size:12px;color:var(--t3);line-height:1.7;}
+.srow-d{font-size:13px;color:var(--t3);line-height:1.7;}
 
 /* ── MARGIN ── */
 .mg-card{padding:10px 12px;border-radius:10px;border:1px solid var(--bd);background:var(--card2);margin-bottom:9px;}
@@ -182,8 +182,8 @@ tr.ch-c{background:rgba(59,109,17,.04);}
 .file{display:flex;align-items:center;gap:10px;padding:8px 11px;background:var(--card2);border-radius:8px;border:1px solid var(--bd);}
 .fic{font-size:16px;color:var(--p400);}
 .fic.a{color:var(--a200);}
-.fn{font-size:12px;color:var(--t1);flex:1;}
-.fs{font-family:'DM Mono',monospace;font-size:11px;color:var(--t3);}
+.fn{font-size:14px;color:var(--t1);flex:1;}
+.fs_x{font-family:'DM Mono',monospace;font-size:11px;color:var(--t3);}
 .fbadge{font-size:11px;padding:2px 8px;border-radius:99px;font-weight:600;}
 .file.missing{border-color:rgba(255,100,100,.28);background:rgba(200,40,40,.05);}
 .file.missing .fic{color:var(--r100);}
@@ -193,7 +193,7 @@ tr.ch-c{background:rgba(59,109,17,.04);}
 .export-card::before{content:'🌏';position:absolute;right:2rem;top:50%;transform:translateY(-50%);font-size:4.5rem;opacity:.1;}
 .export-badge{display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:700;padding:4px 11px;border-radius:99px;background:rgba(255,176,32,.2);color:var(--a100);border:1px solid var(--bda);margin-bottom:9px;}
 .export-title{font-size:19px;font-weight:900;color:#fff;margin-bottom:8px;}
-.export-sub{font-size:13px;color:var(--p200);line-height:1.75;}
+.export-sub{font-size:14px;color:var(--p200);line-height:1.75;}
 
 /* ── ORG CHART ── */
 .org-tree{display:flex;flex-direction:column;align-items:center;gap:0;}
@@ -345,151 +345,156 @@ footer{text-align:center;padding:1.75rem;font-size:12px;color:var(--t3);border-t
 <section id="info">
   <div class="sec-label"><i class="fa-solid fa-building"></i> 회사 기본정보 & 조직도</div>
 
-  <!-- 기본정보 + 사업구조 한 줄 -->
-  <div class="g2" style="margin-bottom:1rem;">
+  <div class="g2" style="margin-bottom:1.25rem;">
+    <!-- 기본정보 -->
     <div class="card">
       <div class="card-t"><i class="fa-solid fa-id-card"></i> 기본 정보</div>
-      <div class="info-g">
-        <div class="info-row"><span class="info-k">회사명</span><span class="info-v">(주)브레인숲</span></div>
-        <div class="info-row"><span class="info-k">대표</span><span class="info-v">이채림</span></div>
-        <div class="info-row"><span class="info-k">대표전화</span><span class="info-v">031-777-3399</span></div>
-        <div class="info-row"><span class="info-k">고객센터</span><span class="info-v">031-777-3396·3398</span></div>
-        <div class="info-row"><span class="info-k">메일</span><span class="info-v">brainsoop@naver.com</span></div>
-        <div class="info-row"><span class="info-k">사업자번호</span><span class="info-v">370-88-00019</span></div>
-        <div class="info-row"><span class="info-k">통판번호</span><span class="info-v">2017-성남중원-0295</span></div>
-        <div class="info-row"><span class="info-k">플랫폼</span><span class="info-v">CAFE24 / brainsoop.com</span></div>
-        <div class="info-row"><span class="info-k">소재지</span><span class="info-v">성남시 중원구 둔촌대로 555 선일테크노피아 611호</span></div>
-        <div class="info-row"><span class="info-k">영업시간</span><span class="info-v">평일 09~18시 (점심 12~13시)</span></div>
+      <div style="display:flex;flex-direction:column;gap:0;">
+        <div style="display:grid;grid-template-columns:90px 1fr;gap:10px 16px;align-items:center;padding:10px 0;border-bottom:1px solid var(--bd);">
+          <span style="font-size:13px;color:var(--t3);">회사명</span><span style="font-size:15px;color:var(--t1);font-weight:600;">(주)브레인숲</span>
+        </div>
+        <div style="display:grid;grid-template-columns:90px 1fr;gap:10px 16px;align-items:center;padding:10px 0;border-bottom:1px solid var(--bd);">
+          <span style="font-size:13px;color:var(--t3);">대표</span><span style="font-size:15px;color:var(--t1);">이채림</span>
+        </div>
+        <div style="display:grid;grid-template-columns:90px 1fr;gap:10px 16px;align-items:center;padding:10px 0;border-bottom:1px solid var(--bd);">
+          <span style="font-size:13px;color:var(--t3);">대표전화</span><span style="font-size:15px;color:var(--t1);">031-777-3399</span>
+        </div>
+        <div style="display:grid;grid-template-columns:90px 1fr;gap:10px 16px;align-items:center;padding:10px 0;border-bottom:1px solid var(--bd);">
+          <span style="font-size:13px;color:var(--t3);">고객센터</span><span style="font-size:15px;color:var(--t1);">031-777-3396 · 3398</span>
+        </div>
+        <div style="display:grid;grid-template-columns:90px 1fr;gap:10px 16px;align-items:center;padding:10px 0;border-bottom:1px solid var(--bd);">
+          <span style="font-size:13px;color:var(--t3);">메일</span><span style="font-size:15px;color:var(--t1);">brainsoop@naver.com</span>
+        </div>
+        <div style="display:grid;grid-template-columns:90px 1fr;gap:10px 16px;align-items:center;padding:10px 0;border-bottom:1px solid var(--bd);">
+          <span style="font-size:13px;color:var(--t3);">사업자</span><span style="font-size:15px;color:var(--t1);">370-88-00019</span>
+        </div>
+        <div style="display:grid;grid-template-columns:90px 1fr;gap:10px 16px;align-items:center;padding:10px 0;border-bottom:1px solid var(--bd);">
+          <span style="font-size:13px;color:var(--t3);">플랫폼</span><span style="font-size:15px;color:var(--t1);">CAFE24 / brainsoop.com</span>
+        </div>
+        <div style="display:grid;grid-template-columns:90px 1fr;gap:10px 16px;align-items:center;padding:10px 0;border-bottom:1px solid var(--bd);">
+          <span style="font-size:13px;color:var(--t3);">소재지</span><span style="font-size:15px;color:var(--t1);">성남시 중원구 둔촌대로 555<br>선일테크노피아 611호</span>
+        </div>
+        <div style="display:grid;grid-template-columns:90px 1fr;gap:10px 16px;align-items:center;padding:10px 0;border-bottom:1px solid var(--bd);">
+          <span style="font-size:13px;color:var(--t3);">영업시간</span><span style="font-size:15px;color:var(--t1);">평일 09~18시 (점심 12~13시)</span>
+        </div>
+        <div style="display:grid;grid-template-columns:90px 1fr;gap:10px 16px;align-items:center;padding:10px 0;">
+          <span style="font-size:13px;color:var(--t3);">창고</span><span style="font-size:15px;color:var(--t1);">본사 606호 + 용인창고</span>
+        </div>
       </div>
     </div>
+
+    <!-- 사업구조 -->
     <div class="card">
-      <div class="card-t"><i class="fa-solid fa-sitemap"></i> 사업 구조</div>
-      <div style="display:flex;flex-direction:column;gap:9px;margin-bottom:12px;">
-        <div style="padding:10px 14px;background:rgba(88,69,232,.09);border-radius:9px;border:1px solid var(--bd);display:flex;align-items:center;gap:10px;">
-          <div style="font-size:18px;">🖥</div>
-          <div><div style="font-size:13px;font-weight:700;color:var(--p300)">온라인 B2C</div><div style="font-size:12px;color:var(--t3)">스마트스토어 · 쿠팡 · 자사몰</div></div>
+      <div class="card-t"><i class="fa-solid fa-diagram-project"></i> 사업 구조</div>
+      <div style="display:flex;flex-direction:column;gap:10px;">
+        <div style="padding:14px 16px;background:rgba(88,69,232,.09);border-radius:10px;border:1px solid var(--bd);">
+          <div style="font-size:15px;font-weight:800;color:var(--p300);margin-bottom:6px;">🏭 제조</div>
+          <div style="font-size:14px;color:var(--t2);line-height:1.8;">교육교구 제품 R&amp;D · 생산 · OEM/ODM<br>교육컨텐츠 프로그램</div>
         </div>
-        <div style="padding:10px 14px;background:rgba(255,176,32,.08);border-radius:9px;border:1px solid var(--bda);display:flex;align-items:center;gap:10px;">
-          <div style="font-size:18px;">🏫</div>
-          <div><div style="font-size:13px;font-weight:700;color:var(--a100)">기관 B2B</div><div style="font-size:12px;color:var(--t3)">어린이집 · 유치원 · 학교장터 · 나라장터</div></div>
+        <div style="padding:14px 16px;background:rgba(255,176,32,.08);border-radius:10px;border:1px solid var(--bda);">
+          <div style="font-size:15px;font-weight:800;color:var(--a100);margin-bottom:6px;">🚚 유통</div>
+          <div style="font-size:14px;color:var(--t2);line-height:1.8;">교육기관 / 관공서 B2B · B2C · 공동구매</div>
         </div>
-        <div style="padding:10px 14px;background:rgba(59,109,17,.07);border-radius:9px;border:1px solid rgba(168,224,99,.2);display:flex;align-items:center;gap:10px;">
-          <div style="font-size:18px;">🤝</div>
-          <div><div style="font-size:13px;font-weight:700;color:var(--g100)">에듀 · 공구 <span style="font-size:11px;font-weight:400;color:var(--t3)">(독립 매출 채널)</span></div><div style="font-size:12px;color:var(--t3)">도매몰 · 맘카페 · 유튜버 · 인스타 · 블로거</div></div>
+        <div style="padding:14px 16px;background:rgba(168,224,99,.07);border-radius:10px;border:1px solid rgba(168,224,99,.2);">
+          <div style="font-size:15px;font-weight:800;color:var(--g100);margin-bottom:6px;">🎓 운영</div>
+          <div style="font-size:14px;color:var(--t2);line-height:1.8;">브레인숲에듀 러닝센터 · 아이클링 러닝센터</div>
         </div>
-      </div>
-      <div style="font-size:12px;color:var(--t3);line-height:1.8;">
-        • 교육기관 전문 도매 유통 기반 / 자사 PB + 해외수입(EDX 등)<br>
-        • 창고: 본사(성남 606호) + 용인창고<br>
-        • 브레인숲 에듀 프로그램 (지사장·교육원) 병행
+        <div style="padding:14px 16px;background:rgba(123,111,255,.08);border-radius:10px;border:1px solid var(--bd);">
+          <div style="font-size:15px;font-weight:800;color:var(--p200);margin-bottom:6px;">🏛 교육문화공간</div>
+          <div style="font-size:14px;color:var(--t2);line-height:1.8;">샌드 뮤지엄 체험문화 카페</div>
+        </div>
       </div>
     </div>
   </div>
 
-  <!-- 조직도 + 수신자료 -->
-  <div class="g2" style="margin-bottom:1rem;">
-    <div class="card" style="overflow-x:auto;">
-      <div class="card-t"><i class="fa-solid fa-sitemap"></i> 조직도 — 2026.05 기준</div>
-      <div style="font-size:12px;color:var(--t3);margin-bottom:16px;">재무·수입파트 제외</div>
-
-      <!-- 한 줄 가로 조직도 -->
-      <div style="display:flex;align-items:flex-start;gap:0;overflow-x:auto;padding-bottom:8px;min-width:700px;">
-
-        <!-- CEO -->
-        <div style="display:flex;flex-direction:column;align-items:center;flex-shrink:0;">
-          <div class="oc ceo" style="min-width:120px;text-align:center;">
-            <div class="oc-name">이채림 대표</div>
-            <div class="oc-title">CEO</div>
-          </div>
-        </div>
-
-        <!-- 화살표 -->
-        <div style="display:flex;align-items:center;padding:0 4px;margin-top:18px;color:var(--bd2);font-size:18px;">▶</div>
-
-        <!-- 손보혜 실장 -->
-        <div style="display:flex;flex-direction:column;align-items:center;flex-shrink:0;">
-          <div class="oc" style="min-width:110px;text-align:center;border-color:rgba(168,224,99,.3);background:rgba(59,109,17,.08);">
-            <div class="oc-name">손보혜 실장</div>
-            <div class="oc-title" style="color:var(--g100);">재무팀 (별도)</div>
-          </div>
-        </div>
-
-        <!-- 구분선 -->
-        <div style="width:1px;background:var(--bd2);height:50px;margin:10px 8px;flex-shrink:0;"></div>
-
-        <!-- 박지현 팀장 + 소속 -->
-        <div style="display:flex;flex-direction:column;align-items:flex-start;gap:6px;flex-shrink:0;">
-          <div class="oc me" style="min-width:130px;text-align:center;">
-            <div class="oc-name">박지현 팀장</div>
-            <div class="oc-title" style="color:var(--a200);">온라인 총괄</div>
-          </div>
-          <div style="display:flex;gap:5px;flex-wrap:wrap;">
-            <div class="sub-oc" style="min-width:100px;text-align:center;">
-              <div class="sub-oc-name">심규태 과장</div>
-              <div class="sub-oc-role">디자인·B2C</div>
-            </div>
-            <div class="sub-oc" style="min-width:100px;text-align:center;">
-              <div class="sub-oc-name">김민영 대리</div>
-              <div class="sub-oc-role">기관영업·CS</div>
-            </div>
-            <div class="sub-oc" style="min-width:100px;text-align:center;">
-              <div class="sub-oc-name">김승희 과장</div>
-              <div class="sub-oc-role">유통발주·마감</div>
-            </div>
-            <div class="sub-oc" style="min-width:100px;text-align:center;">
-              <div class="sub-oc-name">권희석 주임</div>
-              <div class="sub-oc-role">물류·창고</div>
-            </div>
-            <div class="sub-oc" style="min-width:100px;text-align:center;border:1px dashed rgba(168,224,99,.3);background:rgba(59,109,17,.06);">
-              <div class="sub-oc-name" style="color:var(--g100);">🔗 우현지</div>
-              <div class="sub-oc-role">외주·웹디자인</div>
-            </div>
-            <div class="sub-oc" style="min-width:100px;text-align:center;border:1px dashed rgba(255,80,80,.4);opacity:.65;">
-              <div class="sub-oc-name" style="color:var(--r100);">김보민 차장 ⚠</div>
-              <div class="sub-oc-role" style="color:var(--r100);">퇴사 예정</div>
-            </div>
-          </div>
-        </div>
-
-        <!-- 구분선 -->
-        <div style="width:1px;background:var(--bd2);height:50px;margin:10px 8px;flex-shrink:0;"></div>
-
-        <!-- 김준석 팀장 + 소속 -->
-        <div style="display:flex;flex-direction:column;align-items:flex-start;gap:6px;flex-shrink:0;">
-          <div class="oc" style="min-width:130px;text-align:center;border-color:rgba(168,224,99,.3);">
-            <div class="oc-name">김준석 팀장</div>
-            <div class="oc-title" style="color:var(--g100);">에듀 총괄 (이동 예정)</div>
-          </div>
-          <div style="display:flex;gap:5px;">
-            <div class="sub-oc" style="min-width:100px;text-align:center;">
-              <div class="sub-oc-name">차영주 소장</div>
-              <div class="sub-oc-role">에듀 교육이사</div>
-            </div>
-          </div>
-        </div>
-
-      </div>
-      <div style="font-size:11px;color:var(--t3);margin-top:10px;">* 모바일에서는 좌우 스크롤로 확인하세요</div>
+  <!-- 조직도 -->
+  <div class="card" style="margin-bottom:1.25rem;">
+    <div class="card-t"><i class="fa-solid fa-sitemap"></i> 조직도 — 2026.05 기준
+      <span style="font-size:12px;color:var(--t3);font-weight:400;margin-left:8px;text-transform:none;letter-spacing:0;">재무·수입파트 별도</span>
     </div>
 
-    <div class="card">
-      <div class="card-t"><i class="fa-solid fa-folder-open"></i> 수신 자료 파일</div>
-      <div class="file-list">
-        <div class="file"><i class="fa-solid fa-file-excel fic"></i><div class="fn">2026_채널별매출현황_0527</div><div class="fs">36KB</div><span class="fbadge pp" style="color:var(--p200)">매출</span></div>
-        <div class="file"><i class="fa-solid fa-file-excel fic"></i><div class="fn">2024_2025_3개년 채널별매출현황_0527</div><div class="fs">76KB</div><span class="fbadge pp" style="color:var(--p200)">매출</span></div>
-        <div class="file"><i class="fa-solid fa-file-excel fic a"></i><div class="fn">브레인숲_2605_소비자가격변동리스트</div><div class="fs">12KB</div><span class="fbadge pa" style="color:var(--a100)">가격</span></div>
-        <div class="file"><i class="fa-solid fa-file-excel fic"></i><div class="fn">브레인숲_기초등록_마진계산_BOM</div><div class="fs">780KB</div><span class="fbadge pr" style="color:var(--r100)">마진</span></div>
-        <div class="file"><i class="fa-solid fa-file-excel fic"></i><div class="fn">도매몰 리뉴얼_박스단위 마진계산표</div><div class="fs">24KB</div><span class="fbadge pr" style="color:var(--r100)">마진</span></div>
-        <div class="file"><i class="fa-solid fa-file-excel fic a"></i><div class="fn">2026년카달로그 (기관 상품등록)</div><div class="fs">12.8MB</div><span class="fbadge pg" style="color:var(--g100)">상품</span></div>
-        <div class="file"><i class="fa-solid fa-file-excel fic"></i><div class="fn">2026 신상품 특이사항 확인</div><div class="fs">14KB</div><span class="fbadge pg" style="color:var(--g100)">상품</span></div>
-        <div class="file"><i class="fa-solid fa-file-excel fic"></i><div class="fn">브레인숲_상품마스터_회사기본정보_1차</div><div class="fs">28KB</div><span class="fbadge pg" style="color:var(--g100)">마스터</span></div>
-        <div class="file"><i class="fa-solid fa-file-excel fic a"></i><div class="fn">브레인숲_연간시즌_연령별놀이_운영플랜_1차</div><div class="fs">30KB</div><span class="fbadge pp" style="color:var(--p200)">플랜</span></div>
-        <div class="file missing"><i class="fa-solid fa-file-circle-question fic"></i><div class="fn" style="color:var(--r100)">전품목 마진표 (이카운트 기반) — 미확보</div><div class="fs">—</div><span class="fbadge pr" style="color:var(--r100)">긴급</span></div>
-        <div class="file missing"><i class="fa-solid fa-file-circle-question fic"></i><div class="fn" style="color:var(--r100)">거래처별 단가 계약서 — 미확보</div><div class="fs">—</div><span class="fbadge pr" style="color:var(--r100)">긴급</span></div>
-        <div class="file missing"><i class="fa-solid fa-file-circle-question fic"></i><div class="fn" style="color:var(--r100)">현재고 실사 결과 (본사+용인) — 미확보</div><div class="fs">—</div><span class="fbadge pr" style="color:var(--r100)">긴급</span></div>
+    <div style="display:flex;flex-direction:column;align-items:center;gap:0;">
+
+      <!-- CEO -->
+      <div style="background:linear-gradient(135deg,rgba(88,69,232,.28),rgba(88,69,232,.12));border:2px solid var(--bd2);border-radius:12px;padding:14px 48px;text-align:center;">
+        <div style="font-size:19px;font-weight:900;color:#fff;">이채림 대표</div>
+        <div style="font-size:13px;color:var(--p300);margin-top:4px;">CEO · 031-777-3399</div>
+      </div>
+
+      <div style="width:2px;height:22px;background:var(--bd2);"></div>
+      <div style="width:75%;height:2px;background:var(--bd2);"></div>
+
+      <!-- 3개 팀 -->
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:18px;width:100%;">
+
+        <!-- 에듀 김준석 -->
+        <div style="display:flex;flex-direction:column;align-items:center;gap:6px;">
+          <div style="width:2px;height:22px;background:var(--bd2);"></div>
+          <div style="background:rgba(168,224,99,.1);border:2px solid rgba(168,224,99,.35);border-radius:11px;padding:12px 14px;text-align:center;width:100%;">
+            <div style="font-size:16px;font-weight:900;color:#fff;">김준석 팀장</div>
+            <div style="font-size:13px;color:var(--g100);margin-top:4px;">에듀 총괄</div>
+          </div>
+          <div style="width:2px;height:14px;background:var(--bd2);"></div>
+          <div style="background:var(--card2);border:1px solid var(--bd);border-radius:9px;padding:11px 14px;width:100%;text-align:center;">
+            <div style="font-size:15px;font-weight:700;color:var(--t1);">차영주 소장</div>
+            <div style="font-size:13px;color:var(--t3);margin-top:3px;">에듀 교육이사</div>
+          </div>
+        </div>
+
+        <!-- 온라인 박지현 (나) — 직급순: 과장→대리→주임 -->
+        <div style="display:flex;flex-direction:column;align-items:center;gap:6px;">
+          <div style="width:2px;height:22px;background:var(--bd2);"></div>
+          <div style="background:linear-gradient(135deg,rgba(255,176,32,.25),rgba(255,176,32,.08));border:2px solid var(--bda);border-radius:11px;padding:12px 14px;text-align:center;width:100%;">
+            <div style="font-size:16px;font-weight:900;color:#fff;">박지현 팀장 ★</div>
+            <div style="font-size:13px;color:var(--a200);margin-top:4px;">온라인 총괄 (나)</div>
+          </div>
+          <div style="width:2px;height:14px;background:var(--bd2);"></div>
+          <div style="display:flex;flex-direction:column;gap:7px;width:100%;">
+            <!-- 과장 먼저 -->
+            <div style="background:var(--card2);border:1px solid rgba(123,111,255,.25);border-radius:9px;padding:11px 14px;">
+              <div style="font-size:15px;font-weight:700;color:var(--t1);">심규태 <span style="font-size:12px;color:var(--p300);font-weight:600;">과장</span></div>
+              <div style="font-size:13px;color:var(--t3);margin-top:3px;">디자인·콘텐츠 / B2C</div>
+            </div>
+            <div style="background:var(--card2);border:1px solid rgba(123,111,255,.25);border-radius:9px;padding:11px 14px;">
+              <div style="font-size:15px;font-weight:700;color:var(--t1);">김승희 <span style="font-size:12px;color:var(--p300);font-weight:600;">과장</span></div>
+              <div style="font-size:13px;color:var(--t3);margin-top:3px;">기관영업 / 유통발주·마감</div>
+            </div>
+            <!-- 대리 -->
+            <div style="background:var(--card2);border:1px solid var(--bd);border-radius:9px;padding:11px 14px;">
+              <div style="font-size:15px;font-weight:700;color:var(--t1);">김민영 <span style="font-size:12px;color:var(--t3);font-weight:600;">대리</span></div>
+              <div style="font-size:13px;color:var(--t3);margin-top:3px;">기관영업 / 기획·공구·CS</div>
+            </div>
+            <!-- 주임 -->
+            <div style="background:var(--card2);border:1px solid var(--bd);border-radius:9px;padding:11px 14px;">
+              <div style="font-size:15px;font-weight:700;color:var(--t1);">권희석 <span style="font-size:12px;color:var(--t3);font-weight:600;">주임</span></div>
+              <div style="font-size:13px;color:var(--t3);margin-top:3px;">물류파트 / 입출고·창고</div>
+            </div>
+            <!-- 외주 -->
+            <div style="background:rgba(59,109,17,.06);border:1px dashed rgba(168,224,99,.3);border-radius:9px;padding:11px 14px;">
+              <div style="font-size:15px;font-weight:700;color:var(--g100);">🔗 우현지 <span style="font-size:12px;font-weight:400;color:var(--t3);">외주</span></div>
+              <div style="font-size:13px;color:var(--t3);margin-top:3px;">웹디자인·인스타·상세페이지</div>
+            </div>
+            <!-- 퇴사 예정 -->
+            <div style="background:rgba(200,40,40,.05);border:1px dashed rgba(255,80,80,.3);border-radius:9px;padding:11px 14px;opacity:.75;">
+              <div style="font-size:15px;font-weight:700;color:var(--r100);">김보민 <span style="font-size:12px;font-weight:600;">차장</span> ⚠</div>
+              <div style="font-size:13px;color:var(--r100);margin-top:3px;">퇴사 예정 · 인수인계 긴급</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 재무 손보혜 -->
+        <div style="display:flex;flex-direction:column;align-items:center;gap:6px;">
+          <div style="width:2px;height:22px;background:var(--bd2);"></div>
+          <div style="background:rgba(110,103,154,.12);border:2px solid var(--bd);border-radius:11px;padding:12px 14px;text-align:center;width:100%;">
+            <div style="font-size:16px;font-weight:900;color:var(--t1);">손보혜 실장</div>
+            <div style="font-size:13px;color:var(--t3);margin-top:4px;">재무팀 (별도 라인)</div>
+          </div>
+        </div>
+
       </div>
     </div>
   </div>
+
 </section>
 
 <!-- ② 온보딩 방향 -->
@@ -542,71 +547,122 @@ footer{text-align:center;padding:1.75rem;font-size:12px;color:var(--t3);border-t
 <section id="overview">
   <div class="sec-label"><i class="fa-solid fa-chart-bar"></i> 핵심 지표</div>
 
-  <!-- ① 먼저: 지금 우리 매출이 어디 있나 -->
-  <div style="margin-bottom:7px;font-size:12px;font-weight:700;color:var(--p400);letter-spacing:.06em;">▸ 매출 지표 — 지금 우리 어디 있나</div>
-  <div class="kpi-grid" style="margin-bottom:1.1rem;">
-    <div class="kpi a"><div class="kpi-l">2025 최종 마감 (VAT-)</div><div class="kpi-v">311,253만원</div><div class="kpi-s">약 34.2억원 마감 기준</div></div>
-    <div class="kpi p"><div class="kpi-l">2024 연간 (VAT포함)</div><div class="kpi-v">356,903만원</div><div class="kpi-s">약 35.7억원</div></div>
-    <div class="kpi p"><div class="kpi-l">2026 누계 (VAT포함)</div><div class="kpi-v">87,231만원</div><div class="kpi-s">1~5월 27일 기준 / 연환산 약 21억원</div><span class="tag tag-dn">절반 수준</span></div>
-    <div class="kpi p"><div class="kpi-l">2026 일평균 (147일)</div><div class="kpi-v">593만원</div><div class="kpi-s">2025년은 932만원 / -36%</div></div>
-    <div class="kpi p"><div class="kpi-l">2026 주간 평균</div><div class="kpi-v">4,154만원</div><div class="kpi-s">21주 기준 / VAT포함</div></div>
-    <div class="kpi a"><div class="kpi-l">2026 연간 목표 (VAT-)</div><div class="kpi-v">354,802만원</div><div class="kpi-s">회사 설정 목표 (전년 14%↑)</div><span class="tag tag-dn">현재 20%</span></div>
-  </div>
-
-  <!-- ② 동기대비 추이 — 왜 목표가 어려운지 보여주는 맥락 -->
+  <!-- 3개년 매출 비교 요약 -->
   <div class="card" style="margin-bottom:1.1rem;">
-    <div class="card-t"><i class="fa-solid fa-chart-line"></i> 2026년 동기대비 추이 — 현재 흐름 파악 (VAT포함 · 만원)</div>
-    <div class="tbl-wrap"><table>
-      <thead><tr><th>월</th><th class="n">2024 동월</th><th class="n">2025 동월</th><th class="n">2026 실적</th><th class="n">전년비</th><th class="n">전전년비</th><th>코멘트</th></tr></thead>
-      <tbody>
-        <tr><td>1월</td><td class="n">3억 9,326만원</td><td class="n">1억 9,769만원</td><td class="n hl">1억 4,262만원</td><td class="n" style="color:#E84040">▼-27.9%</td><td class="n" style="color:#E84040">▼-63.7%</td><td style="font-size:12px;color:var(--t3)">연초 비수기</td></tr>
-        <tr style="background:rgba(255,176,32,.04)"><td>2월</td><td class="n">3억 5,323만원</td><td class="n">5억 7,028만원</td><td class="n al">3억 4,310만원</td><td class="n" style="color:#E84040">▼-39.8%</td><td class="n" style="color:var(--g100)">≈2024 수준</td><td style="font-size:12px;color:var(--t3)">신학기 납품 / 2024와 유사</td></tr>
-        <tr><td>3월</td><td class="n">3억 6,001만원</td><td class="n">2억 8,665만원</td><td class="n hl">1억 4,400만원</td><td class="n" style="color:#E84040">▼-49.8%</td><td class="n" style="color:#E84040">▼-60.0%</td><td style="font-size:12px;color:var(--r100)">⚠ 신학기 성수기인데 목표 44%</td></tr>
-        <tr><td>4월</td><td class="n">2억 4,684만원</td><td class="n">2억 4,534만원</td><td class="n hl">1억 2,895만원</td><td class="n" style="color:#E84040">▼-47.4%</td><td class="n" style="color:#E84040">▼-47.7%</td><td style="font-size:12px;color:var(--t3)">어린이날 준비 / 37% 달성</td></tr>
-        <tr><td>5월(~27일)</td><td class="n">1억 8,496만원</td><td class="n">2억 312만원</td><td class="n hl">6,344만원</td><td class="n" style="color:#E84040">▼-68.8%</td><td class="n" style="color:#E84040">▼-65.7%</td><td style="font-size:12px;color:var(--t3)">27일까지 / 어린이날 마무리 중</td></tr>
-        <tr class="total-row"><td>1~5월 누계</td><td class="n">15억 3,830만원</td><td class="n">15억 308만원</td><td class="n" style="color:var(--a100)">8억 2,211만원</td><td class="n" style="color:#E84040;font-weight:700">▼-45.3%</td><td class="n" style="color:#E84040;font-weight:700">▼-46.5%</td><td style="font-size:12px;color:var(--r100)">전년 동기 대비 약 절반</td></tr>
-      </tbody>
-    </table></div>
-    <div style="margin-top:9px;padding:9px 12px;background:rgba(232,64,64,.06);border-radius:9px;border:1px solid rgba(255,100,100,.2);font-size:12px;color:var(--r100);">⚠ 2025년 3월도 전년비 -50% 하락. 2년 연속 하락 추세. 현재 인원·체계 그대로라면 연환산 21~25억 수준이 현실적 범위. 채널 정비·공구 확대·광고 투자가 하반기 반등의 핵심.</div>
-  </div>
+    <div class="card-t"><i class="fa-solid fa-chart-line"></i> 3개년 매출 요약 — 얼마씩 해왔나 (VAT 포함)</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;margin-bottom:14px;">
 
-  <!-- ③ 그래서 목표는 — 달성률 마지막에 맥락으로 -->
-  <div class="card" style="margin-bottom:1.1rem;">
-    <div class="card-t"><i class="fa-solid fa-flag-checkered"></i> 2026년 채널별 목표 달성률 (VAT- 기준 · 주간보고서 기준)</div>
-    <div style="font-size:12px;color:var(--t3);margin-bottom:12px;">위 흐름을 감안할 때 회사 설정 목표(354,802만원 / 약 39억원)는 현재 페이스 대비 2배 이상 달성이 필요한 수치. 하반기 반전이 중요.</div>
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:14px;">
+      <!-- 2024 -->
+      <div style="background:rgba(88,69,232,.08);border:1px solid var(--bd);border-radius:12px;padding:16px;">
+        <div style="font-size:13px;color:var(--p300);font-weight:700;margin-bottom:10px;">2024년 (확정)</div>
+        <div style="margin-bottom:8px;">
+          <div style="font-size:12px;color:var(--t3);">연간 매출</div>
+          <div style="font-size:22px;font-weight:800;color:var(--t1);">35억 6,903만</div>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
+          <div style="background:var(--card2);border-radius:8px;padding:9px 10px;">
+            <div style="font-size:12px;color:var(--t3);">일평균</div>
+            <div style="font-size:17px;font-weight:700;color:var(--p200);">978만원</div>
+            <div style="font-size:11px;color:var(--t3);margin-top:2px;">365일 기준</div>
+          </div>
+          <div style="background:var(--card2);border-radius:8px;padding:9px 10px;">
+            <div style="font-size:12px;color:var(--t3);">주간평균</div>
+            <div style="font-size:17px;font-weight:700;color:var(--p200);">6,863만원</div>
+            <div style="font-size:11px;color:var(--t3);margin-top:2px;">52주 기준</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2025 -->
+      <div style="background:rgba(255,176,32,.07);border:1px solid var(--bda);border-radius:12px;padding:16px;">
+        <div style="font-size:13px;color:var(--a200);font-weight:700;margin-bottom:10px;">2025년 (최종 마감)</div>
+        <div style="margin-bottom:8px;">
+          <div style="font-size:12px;color:var(--t3);">연간 매출</div>
+          <div style="font-size:22px;font-weight:800;color:var(--t1);">34억 3만</div>
+          <div style="font-size:12px;color:var(--t3);margin-top:2px;">VAT제외 311,253만원</div>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
+          <div style="background:var(--card2);border-radius:8px;padding:9px 10px;">
+            <div style="font-size:12px;color:var(--t3);">일평균</div>
+            <div style="font-size:17px;font-weight:700;color:var(--a100);">932만원</div>
+            <div style="font-size:11px;color:var(--t3);margin-top:2px;">365일 기준</div>
+          </div>
+          <div style="background:var(--card2);border-radius:8px;padding:9px 10px;">
+            <div style="font-size:12px;color:var(--t3);">주간평균</div>
+            <div style="font-size:17px;font-weight:700;color:var(--a100);">6,539만원</div>
+            <div style="font-size:11px;color:var(--t3);margin-top:2px;">52주 기준</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2026 현재 -->
+      <div style="background:rgba(232,64,64,.06);border:1px solid rgba(255,100,100,.2);border-radius:12px;padding:16px;">
+        <div style="font-size:13px;color:var(--r100);font-weight:700;margin-bottom:10px;">2026년 (~5.27 현재)</div>
+        <div style="margin-bottom:8px;">
+          <div style="font-size:12px;color:var(--t3);">누계 매출</div>
+          <div style="font-size:22px;font-weight:800;color:var(--t1);">8억 7,231만</div>
+          <div style="font-size:12px;color:var(--r100);margin-top:2px;">전년 동기 대비 ▼45%</div>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
+          <div style="background:var(--card2);border-radius:8px;padding:9px 10px;">
+            <div style="font-size:12px;color:var(--t3);">일평균</div>
+            <div style="font-size:17px;font-weight:700;color:var(--r100);">593만원</div>
+            <div style="font-size:11px;color:var(--t3);margin-top:2px;">147일 기준</div>
+          </div>
+          <div style="background:var(--card2);border-radius:8px;padding:9px 10px;">
+            <div style="font-size:12px;color:var(--t3);">주간평균</div>
+            <div style="font-size:17px;font-weight:700;color:var(--r100);">4,154만원</div>
+            <div style="font-size:11px;color:var(--t3);margin-top:2px;">21주 기준</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <!-- 비교 바 -->
+    <div style="display:flex;flex-direction:column;gap:8px;padding:12px;background:var(--card2);border-radius:10px;">
+      <div style="font-size:13px;color:var(--t3);font-weight:700;margin-bottom:2px;">일평균 비교</div>
       <div>
-        <div class="goal-lbl"><span>전체 목표 354,802만원</span><span>20% 달성</span></div>
-        <div class="goal-bg"><div class="goal-fill" style="width:20%;background:linear-gradient(90deg,var(--p500),var(--p400))"></div></div>
-        <div style="font-size:12px;color:var(--t3);margin-top:4px;">누계 71,162만원 달성</div>
+        <div style="display:flex;justify-content:space-between;font-size:13px;margin-bottom:4px;"><span style="color:var(--p200);">2024</span><span style="color:var(--p200);">978만원</span></div>
+        <div style="background:rgba(123,111,255,.12);border-radius:99px;height:10px;"><div style="width:100%;height:100%;background:var(--p400);border-radius:99px;"></div></div>
       </div>
       <div>
-        <div class="goal-lbl"><span>기관 159,083만원</span><span style="color:var(--a100)">32% ← 가장 양호</span></div>
-        <div class="goal-bg"><div class="goal-fill" style="width:32%;background:linear-gradient(90deg,var(--a300),var(--a200))"></div></div>
-        <div style="font-size:12px;color:var(--t3);margin-top:4px;">누계 50,362만원 달성</div>
+        <div style="display:flex;justify-content:space-between;font-size:13px;margin-bottom:4px;"><span style="color:var(--a100);">2025</span><span style="color:var(--a100);">932만원 (-4.7%)</span></div>
+        <div style="background:rgba(123,111,255,.12);border-radius:99px;height:10px;"><div style="width:95%;height:100%;background:var(--a200);border-radius:99px;"></div></div>
       </div>
       <div>
-        <div class="goal-lbl"><span>온라인 84,350만원</span><span>20%</span></div>
-        <div class="goal-bg"><div class="goal-fill" style="width:20%;background:var(--p400)"></div></div>
-        <div style="font-size:12px;color:var(--t3);margin-top:4px;">누계 17,090만원 달성</div>
-      </div>
-      <div>
-        <div class="goal-lbl"><span>에듀 42,309만원</span><span style="color:var(--r100)">9% ⚠ 최저</span></div>
-        <div class="goal-bg"><div class="goal-fill" style="width:9%;background:#E84040"></div></div>
-        <div style="font-size:12px;color:var(--r100);margin-top:4px;">누계 3,710만원 — 공구 독립채널화 시급</div>
+        <div style="display:flex;justify-content:space-between;font-size:13px;margin-bottom:4px;"><span style="color:var(--r100);">2026 현재 페이스</span><span style="color:var(--r100);">593만원 (-36%)</span></div>
+        <div style="background:rgba(123,111,255,.12);border-radius:99px;height:10px;"><div style="width:61%;height:100%;background:#E84040;border-radius:99px;"></div></div>
       </div>
     </div>
   </div>
 
-  <div style="margin-bottom:7px;font-size:12px;font-weight:700;color:var(--a300);letter-spacing:.06em;">▸ 상품 지표</div>
-  <div class="kpi-grid">
-    <div class="kpi a"><div class="kpi-l">전체 등록 상품</div><div class="kpi-v">1,083종</div><div class="kpi-s">공식몰 상품보기 기준</div></div>
-    <div class="kpi a"><div class="kpi-l">세트 상품</div><div class="kpi-v">48종</div><div class="kpi-s">수집본 내 추출 (B2B 핵심)</div></div>
-    <div class="kpi r"><div class="kpi-l">품절·이슈 상품</div><div class="kpi-v">86종</div><div class="kpi-s">품절 27종 + 단종·구성변경 59종</div><span class="tag tag-dn">즉시 조치</span></div>
-    <div class="kpi a"><div class="kpi-l">가격인상 품목</div><div class="kpi-v">42종</div><div class="kpi-s">평균 +10% / 2026.05 적용</div><span class="tag tag-dn">채널 동기화</span></div>
-    <div class="kpi p"><div class="kpi-l">카테고리</div><div class="kpi-v">8개</div><div class="kpi-s">언어/퍼즐~보드게임</div></div>
-    <div class="kpi p"><div class="kpi-l">미확보 상품 DB</div><div class="kpi-v">938종</div><div class="kpi-s">카페24 전수 내보내기 필요</div><span class="tag tag-dn">미확보</span></div>
+  <!-- 2026 목표 달성률 -->
+  <div class="card" style="margin-bottom:1.1rem;">
+    <div class="card-t"><i class="fa-solid fa-flag-checkered"></i> 2026 채널별 목표 달성률 (VAT-)</div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;margin-top:4px;">
+      <div>
+        <div style="display:flex;justify-content:space-between;font-size:14px;margin-bottom:5px;"><span style="color:var(--t2);">전체 354,802만</span><span style="color:var(--t1);font-weight:700;">20%</span></div>
+        <div style="background:rgba(123,111,255,.12);border-radius:99px;height:12px;"><div style="width:20%;height:100%;background:var(--p500);border-radius:99px;"></div></div>
+        <div style="font-size:12px;color:var(--t3);margin-top:4px;">누계 71,162만원</div>
+      </div>
+      <div>
+        <div style="display:flex;justify-content:space-between;font-size:14px;margin-bottom:5px;"><span style="color:var(--t2);">기관 159,083만</span><span style="color:var(--a100);font-weight:700;">32% ↑</span></div>
+        <div style="background:rgba(123,111,255,.12);border-radius:99px;height:12px;"><div style="width:32%;height:100%;background:var(--a200);border-radius:99px;"></div></div>
+        <div style="font-size:12px;color:var(--t3);margin-top:4px;">누계 50,362만원</div>
+      </div>
+      <div>
+        <div style="display:flex;justify-content:space-between;font-size:14px;margin-bottom:5px;"><span style="color:var(--t2);">온라인 84,350만</span><span style="color:var(--t1);font-weight:700;">20%</span></div>
+        <div style="background:rgba(123,111,255,.12);border-radius:99px;height:12px;"><div style="width:20%;height:100%;background:var(--p400);border-radius:99px;"></div></div>
+        <div style="font-size:12px;color:var(--t3);margin-top:4px;">누계 17,090만원</div>
+      </div>
+      <div>
+        <div style="display:flex;justify-content:space-between;font-size:14px;margin-bottom:5px;"><span style="color:var(--t2);">에듀 42,309만</span><span style="color:var(--r100);font-weight:700;">9% ⚠</span></div>
+        <div style="background:rgba(123,111,255,.12);border-radius:99px;height:12px;"><div style="width:9%;height:100%;background:#E84040;border-radius:99px;"></div></div>
+        <div style="font-size:12px;color:var(--r100);margin-top:4px;">누계 3,710만원 — 긴급</div>
+      </div>
+    </div>
   </div>
+
 </section>
 
 <!-- ④ 3개년 매출 -->
