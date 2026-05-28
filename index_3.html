@@ -1,0 +1,1038 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>박지현 팀장 — 브레인숲 현황 분석 허브 v9.0</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+<style>
+:root{
+  --p600:#3D2FBF;--p500:#5845E8;--p400:#7B6FFF;--p300:#9E95FF;--p200:#C4BFFF;
+  --a300:#E89400;--a200:#FFB020;--a100:#FFD166;--a50:#FFF3D0;
+  --g100:#A8E063;--g600:#3A6B00;
+  --r100:#FF8A8A;
+  --bg:#08071A;--card:#10102A;--card2:#181835;--card3:#20203F;
+  --bd:rgba(123,111,255,0.18);--bd2:rgba(123,111,255,0.32);--bda:rgba(255,176,32,0.22);
+  --t1:#EEEAFF;--t2:#B0AADC;--t3:#6E679A;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:'Noto Sans KR',sans-serif;background:var(--bg);color:var(--t1);font-size:17px;line-height:1.7;}
+body::before{content:'';position:fixed;inset:0;
+  background:radial-gradient(ellipse 65% 45% at 15% 5%,rgba(88,69,232,.18) 0%,transparent 55%),
+  radial-gradient(ellipse 45% 30% at 85% 85%,rgba(255,176,32,.08) 0%,transparent 55%);
+  pointer-events:none;z-index:0;}
+
+/* ── SINGLE NAV ── */
+.site-header{background:linear-gradient(135deg,#14103A,#1E1850);border-bottom:1px solid var(--bd2);position:sticky;top:0;z-index:100;backdrop-filter:blur(20px);}
+.sh-top{max-width:1320px;margin:0 auto;padding:1rem 1.5rem .75rem;display:flex;align-items:center;justify-content:space-between;gap:16px;}
+.sh-logo{display:flex;align-items:center;gap:12px;flex-shrink:0;}
+.sh-av{width:42px;height:42px;border-radius:50%;background:linear-gradient(135deg,var(--a200),var(--a100));display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:900;color:#1a0a00;flex-shrink:0;}
+.sh-title{font-size:22px;font-weight:900;color:#fff;letter-spacing:-.02em;line-height:1.2;}
+.sh-sub{font-size:12px;color:var(--p300);margin-top:2px;display:flex;gap:8px;flex-wrap:wrap;align-items:center;}
+.sh-badge{font-size:11px;font-weight:600;padding:2px 9px;border-radius:99px;}
+.sh-ba{background:rgba(255,80,80,.15);color:var(--r100);border:1px solid rgba(255,80,80,.28);}
+.sh-bc{background:rgba(255,176,32,.15);color:var(--a100);border:1px solid var(--bda);}
+.sh-bg{background:rgba(168,224,99,.1);color:var(--g100);border:1px solid rgba(168,224,99,.22);}
+.sh-right{display:flex;align-items:center;gap:8px;flex-shrink:0;}
+.print-btn{background:linear-gradient(135deg,var(--a300),var(--a200));border:none;border-radius:8px;padding:7px 14px;font-size:13px;font-weight:700;color:#1a0a00;cursor:pointer;display:flex;align-items:center;gap:6px;font-family:'Noto Sans KR',sans-serif;white-space:nowrap;}
+.print-btn:hover{filter:brightness(1.1);}
+.sh-date{font-family:'DM Mono',monospace;font-size:11px;color:var(--t3);white-space:nowrap;}
+.sh-tabs{max-width:1320px;margin:0 auto;padding:0 1.5rem;display:flex;gap:3px;overflow-x:auto;padding-bottom:0;border-top:1px solid rgba(123,111,255,.12);}
+.sh-tabs::-webkit-scrollbar{height:3px;}
+.sh-tabs::-webkit-scrollbar-thumb{background:var(--p500);border-radius:99px;}
+.stab{padding:10px 16px;font-size:13px;font-weight:600;cursor:pointer;color:var(--t2);border:none;background:transparent;transition:all .15s;white-space:nowrap;font-family:'Noto Sans KR',sans-serif;border-bottom:3px solid transparent;display:flex;align-items:center;gap:6px;flex-shrink:0;}
+.stab i{font-size:13px;}
+.stab:hover{color:var(--p200);background:rgba(123,111,255,.08);}
+.stab.on{color:#fff;border-bottom-color:var(--a200);background:rgba(88,69,232,.12);}
+
+/* ── LAYOUT ── */
+.wrap{max-width:1320px;margin:0 auto;padding:1.75rem 1.5rem 4rem;position:relative;z-index:1;}
+section{scroll-margin-top:110px;margin-bottom:2.25rem;}
+.sec-label{font-size:12px;font-weight:700;color:var(--p400);letter-spacing:.08em;text-transform:uppercase;margin-bottom:12px;display:flex;align-items:center;gap:8px;}
+.sec-label::after{content:'';flex:1;height:1px;background:linear-gradient(90deg,var(--bd2),transparent);}
+.sec-label i{font-size:13px;}
+
+/* ── CARD ── */
+.card{background:var(--card);border:1px solid var(--bd);border-radius:14px;padding:1.35rem;}
+.card-t{font-size:11px;font-weight:700;color:var(--p400);letter-spacing:.06em;text-transform:uppercase;margin-bottom:11px;display:flex;align-items:center;gap:6px;}
+.card-t i{font-size:13px;}
+
+/* ── KPI ── */
+.kpi-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(155px,1fr));gap:10px;}
+.kpi{background:var(--card);border:1px solid var(--bd);border-radius:12px;padding:1rem 1.1rem;position:relative;overflow:hidden;}
+.kpi::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;border-radius:12px 12px 0 0;}
+.kpi.p::before{background:linear-gradient(90deg,var(--p500),var(--p400));}
+.kpi.a::before{background:linear-gradient(90deg,var(--a300),var(--a200));}
+.kpi.g::before{background:var(--g100);}
+.kpi.r::before{background:#E84040;}
+.kpi-l{font-size:14px;color:var(--t3);margin-bottom:4px;}
+.kpi-v{font-size:24px;font-weight:700;letter-spacing:-.02em;color:var(--t1);}
+.kpi-s{font-size:13px;color:var(--t3);margin-top:3px;}
+.tag{display:inline-block;font-size:11px;padding:2px 8px;border-radius:99px;margin-top:5px;font-weight:600;}
+.tag-up{background:rgba(59,109,17,.18);color:var(--g100);}
+.tag-dn{background:rgba(200,40,40,.15);color:var(--r100);}
+.tag-n{background:rgba(123,111,255,.18);color:var(--p200);}
+
+/* ── GRID ── */
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:1.1rem;}
+.g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1.1rem;}
+.g4{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;}
+@media(max-width:900px){.g2,.g3,.g4{grid-template-columns:1fr;}}
+
+/* ── TABLE ── */
+.tbl-wrap{overflow-x:auto;}
+table{width:100%;border-collapse:collapse;font-size:13px;}
+thead tr{border-bottom:1px solid var(--bd2);}
+thead th{padding:8px 10px;color:var(--p400);font-weight:700;font-size:13px;letter-spacing:.04em;text-align:left;background:rgba(88,69,232,.07);}
+tbody td{padding:9px 10px;border-bottom:1px solid var(--bd);color:var(--t2);vertical-align:middle;font-size:14px;}
+tbody tr:last-child td{border-bottom:none;}
+tbody tr:hover td{background:rgba(123,111,255,.05);}
+td.n{text-align:right;font-family:'DM Mono',monospace;font-size:12px;}
+td.hl{color:var(--p300);font-weight:600;}
+td.al{color:var(--a100);font-weight:600;}
+td.gl{color:var(--g100);font-weight:600;}
+tr.total-row td{font-weight:700;background:rgba(88,69,232,.09)!important;}
+tr.ch-a{background:rgba(123,111,255,.04);}
+tr.ch-b{background:rgba(255,176,32,.04);}
+tr.ch-c{background:rgba(59,109,17,.04);}
+
+/* ── PILL ── */
+.pill{display:inline-block;font-size:11px;padding:3px 8px;border-radius:99px;font-weight:600;white-space:nowrap;}
+.pp{background:rgba(88,69,232,.2);color:var(--p200);}
+.pa{background:rgba(255,176,32,.18);color:var(--a100);}
+.pg{background:rgba(59,109,17,.2);color:var(--g100);}
+.pr{background:rgba(200,40,40,.18);color:var(--r100);}
+.pn{background:rgba(110,103,154,.2);color:var(--t3);}
+
+/* ── ALERT ── */
+.al-list{display:flex;flex-direction:column;gap:8px;}
+.al{display:flex;gap:10px;padding:10px 13px;border-radius:10px;border:1px solid;align-items:flex-start;}
+.al.r{background:rgba(163,30,30,.07);border-color:rgba(255,100,100,.22);}
+.al.a{background:rgba(200,120,0,.07);border-color:rgba(255,176,32,.22);}
+.al.p{background:rgba(88,69,232,.07);border-color:var(--bd);}
+.al.g{background:rgba(59,109,17,.07);border-color:rgba(168,224,99,.22);}
+.al-ic{font-size:15px;flex-shrink:0;margin-top:2px;}
+.al.r .al-ic{color:#E84040;}.al.a .al-ic{color:var(--a200);}.al.p .al-ic{color:var(--p400);}.al.g .al-ic{color:var(--g100);}
+.al-t{font-size:15px;font-weight:700;color:var(--t1);}
+.al-d{font-size:13px;color:var(--t3);margin-top:3px;line-height:1.6;}
+
+/* ── BAR ── */
+.bar-row{display:flex;align-items:center;gap:9px;margin-bottom:10px;}
+.bar-lbl{font-size:12px;color:var(--t2);width:90px;flex-shrink:0;text-align:right;}
+.bar-bg{flex:1;background:rgba(123,111,255,.12);border-radius:99px;height:9px;overflow:hidden;}
+.bar-fill{height:100%;border-radius:99px;}
+.bar-val{font-family:'DM Mono',monospace;font-size:12px;color:var(--t2);width:40px;text-align:right;flex-shrink:0;}
+
+/* ── CHART ── */
+.ch-wrap{position:relative;width:100%;}
+.ch180{height:180px;}
+.ch240{height:240px;}
+.ch270{height:270px;}
+
+/* ── LEGEND ── */
+.lgd{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:9px;}
+.lgd-i{display:flex;align-items:center;gap:5px;font-size:12px;color:var(--t3);}
+.lgd-dot{width:10px;height:10px;border-radius:2px;flex-shrink:0;}
+
+/* ── INFO ── */
+.info-g{display:grid;grid-template-columns:1fr 1fr;gap:3px 14px;}
+.info-row{display:flex;gap:8px;font-size:13px;padding:5px 0;border-bottom:1px solid var(--bd);}
+.info-k{color:var(--t3);flex-shrink:0;width:90px;}
+.info-v{color:var(--t2);}
+
+/* ── GOAL BAR ── */
+.goal-row{margin-bottom:12px;}
+.goal-lbl{display:flex;justify-content:space-between;font-size:12px;color:var(--t3);margin-bottom:5px;}
+.goal-lbl span:last-child{color:var(--t2);font-weight:600;}
+.goal-bg{background:rgba(123,111,255,.12);border-radius:99px;height:11px;overflow:hidden;}
+.goal-fill{height:100%;border-radius:99px;}
+
+/* ── DIR ── */
+.dir-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:9px;}
+.dir{background:rgba(88,69,232,.07);border:1px solid rgba(88,69,232,.2);border-radius:10px;padding:.95rem 1.1rem;}
+.dir-n{font-size:11px;font-weight:700;color:var(--p400);margin-bottom:4px;}
+.dir-t{font-size:13px;font-weight:700;color:var(--t1);margin-bottom:5px;}
+.dir-d{font-size:12px;color:var(--t3);line-height:1.65;}
+
+/* ── SROW ── */
+.srow{display:flex;gap:9px;align-items:flex-start;padding:9px 11px;border-radius:8px;margin-bottom:6px;}
+.srow.peak{border:1px solid rgba(232,64,64,.25);background:rgba(232,64,64,.06);}
+.srow.semi{border:1px solid rgba(255,176,32,.2);background:rgba(255,176,32,.05);}
+.srow.now{border:2px solid var(--a200);background:rgba(255,176,32,.09);}
+.srow.off{border:1px solid var(--bd);background:rgba(110,103,154,.05);}
+.srow-mo{font-size:11px;font-weight:700;width:55px;flex-shrink:0;padding-top:1px;}
+.srow.peak .srow-mo{color:var(--r100);}
+.srow.semi .srow-mo,.srow.now .srow-mo{color:var(--a100);}
+.srow.off .srow-mo{color:var(--t3);}
+.srow-d{font-size:12px;color:var(--t3);line-height:1.7;}
+
+/* ── MARGIN ── */
+.mg-card{padding:10px 12px;border-radius:10px;border:1px solid var(--bd);background:var(--card2);margin-bottom:9px;}
+.mg-cat{font-size:12px;font-weight:700;color:var(--p200);margin-bottom:5px;}
+.mg-bar-bg{flex:1;background:rgba(123,111,255,.12);border-radius:99px;height:10px;overflow:hidden;}
+.mg-bar-fill{height:100%;border-radius:99px;}
+.mg-val{font-size:13px;font-weight:700;font-family:'DM Mono',monospace;width:44px;text-align:right;flex-shrink:0;}
+.mg-sub{font-size:11px;color:var(--t3);margin-top:3px;}
+
+/* ── FILE ── */
+.file-list{display:flex;flex-direction:column;gap:6px;}
+.file{display:flex;align-items:center;gap:10px;padding:8px 11px;background:var(--card2);border-radius:8px;border:1px solid var(--bd);}
+.fic{font-size:16px;color:var(--p400);}
+.fic.a{color:var(--a200);}
+.fn{font-size:12px;color:var(--t1);flex:1;}
+.fs{font-family:'DM Mono',monospace;font-size:11px;color:var(--t3);}
+.fbadge{font-size:11px;padding:2px 8px;border-radius:99px;font-weight:600;}
+.file.missing{border-color:rgba(255,100,100,.28);background:rgba(200,40,40,.05);}
+.file.missing .fic{color:var(--r100);}
+
+/* ── EXPORT ── */
+.export-card{background:linear-gradient(135deg,rgba(88,69,232,.13),rgba(255,176,32,.08));border:1px solid var(--bd2);border-radius:15px;padding:1.4rem 1.6rem;position:relative;overflow:hidden;}
+.export-card::before{content:'🌏';position:absolute;right:2rem;top:50%;transform:translateY(-50%);font-size:4.5rem;opacity:.1;}
+.export-badge{display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:700;padding:4px 11px;border-radius:99px;background:rgba(255,176,32,.2);color:var(--a100);border:1px solid var(--bda);margin-bottom:9px;}
+.export-title{font-size:19px;font-weight:900;color:#fff;margin-bottom:8px;}
+.export-sub{font-size:13px;color:var(--p200);line-height:1.75;}
+
+/* ── ORG CHART ── */
+.org-tree{display:flex;flex-direction:column;align-items:center;gap:0;}
+.oc{background:var(--card2);border:1px solid var(--bd);border-radius:11px;padding:10px 14px;text-align:center;min-width:140px;display:inline-block;}
+.oc.ceo{background:linear-gradient(135deg,rgba(88,69,232,.22),rgba(88,69,232,.1));border-color:var(--bd2);min-width:160px;}
+.oc.me{background:linear-gradient(135deg,rgba(255,176,32,.2),rgba(255,176,32,.08));border-color:var(--bda);}
+.oc.out{opacity:.5;border:1px dashed rgba(255,100,100,.35);}
+.oc-name{font-size:14px;font-weight:700;color:var(--t1);}
+.oc-title{font-size:11px;font-weight:600;color:var(--p300);margin-top:3px;}
+.oc-role{font-size:11px;color:var(--t3);margin-top:2px;line-height:1.4;}
+.vline{width:2px;height:18px;background:var(--bd2);margin:0 auto;}
+.hline-wrap{display:flex;align-items:flex-start;justify-content:center;gap:24px;position:relative;}
+.hline-wrap::before{content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);width:calc(100% - 80px);height:2px;background:var(--bd2);}
+.branch{display:flex;flex-direction:column;align-items:center;}
+.sub-list{display:flex;flex-direction:column;gap:7px;margin-top:7px;align-items:center;}
+.sub-oc{background:rgba(30,26,60,.7);border:1px solid var(--bd);border-radius:9px;padding:8px 12px;text-align:center;min-width:130px;}
+.sub-oc-name{font-size:13px;font-weight:700;color:var(--t1);}
+.sub-oc-role{font-size:11px;color:var(--t3);margin-top:2px;}
+
+::-webkit-scrollbar{width:5px;height:5px;}
+::-webkit-scrollbar-track{background:var(--bg);}
+::-webkit-scrollbar-thumb{background:var(--p500);border-radius:99px;}
+footer{text-align:center;padding:1.75rem;font-size:12px;color:var(--t3);border-top:1px solid var(--bd);}
+
+
+
+
+
+@media(max-width:768px){
+  /* 헤더 */
+  .sh-top{padding:.6rem 1rem .5rem;gap:8px;flex-wrap:nowrap;}
+  .sh-av{width:34px;height:34px;font-size:14px;flex-shrink:0;}
+  .sh-title{font-size:15px;letter-spacing:0;}
+  .sh-sub{font-size:10px;gap:4px;margin-top:1px;}
+  .sh-badge{font-size:10px;padding:2px 7px;}
+  .sh-right{display:none;}
+  .sh-tabs{padding:0 .5rem;}
+  .stab{padding:8px 10px;font-size:13px;gap:3px;}
+  .stab i{font-size:11px;}
+  /* 레이아웃 */
+  .wrap{padding:1rem .75rem 3rem;}
+  section{scroll-margin-top:95px;margin-bottom:1.5rem;}
+  .sec-label{font-size:11px;}
+  /* 카드 */
+  .card{padding:1rem .9rem;}
+  .card-t{font-size:10px;}
+  /* 그리드 전부 1열 */
+  .g2,.g3,.g4,.kpi-grid{grid-template-columns:1fr;}
+  .dir-grid{grid-template-columns:1fr 1fr;}
+  /* KPI */
+  .kpi-v{font-size:22px;}
+  .kpi-l{font-size:13px;}
+  .kpi-s{font-size:13px;}
+  /* 테이블 */
+  .tbl-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;}
+  table{font-size:13px;min-width:500px;}
+  thead th{font-size:12px;padding:6px 8px;}
+  tbody td{padding:7px 8px;font-size:13px;}
+  /* 조직도 */
+  .oc{min-width:110px;padding:8px 10px;}
+  .oc-name{font-size:13px;}
+  .sub-oc{min-width:110px;padding:6px 10px;}
+  .sub-oc-name{font-size:12px;}
+  /* 정보 */
+  .info-g{grid-template-columns:1fr;}
+  .info-k{width:75px;font-size:12px;}
+  .info-v{font-size:12px;}
+  /* 익스포트 */
+  .export-card{padding:1rem;}
+  .export-title{font-size:16px;}
+  .export-sub{font-size:12px;}
+  .export-card::before{font-size:3rem;right:1rem;}
+  /* 바 */
+  .bar-lbl{width:65px;font-size:11px;}
+  /* 목표 */
+  .goal-lbl{font-size:11px;}
+  /* srow */
+  .srow-mo{width:45px;font-size:10px;}
+  .srow-d{font-size:11px;}
+}
+@media(max-width:480px){
+  .sh-title{font-size:13px;}
+  .stab{padding:7px 8px;font-size:11px;}
+  .stab i{display:none;}
+  .dir-grid{grid-template-columns:1fr;}
+  .kpi-grid{grid-template-columns:1fr 1fr;}
+  table{min-width:420px;}
+  .oc-name{font-size:12px;}
+}
+
+
+/* ORG BRANCHES */
+.org-branches{display:flex;justify-content:center;gap:32px;align-items:flex-start;position:relative;flex-wrap:wrap;}
+@media(max-width:768px){
+  .org-branches{flex-direction:column;align-items:center;gap:0;}
+  .org-branches > div{width:100% !important;max-width:280px;}
+  .org-branches::before{display:none;}
+}
+
+@media print{
+  .site-header,.print-btn{display:none!important;}
+  body{background:#fff!important;color:#222!important;}
+  .card,.mg-card,.export-card,.dir,.al,.file,.kpi,.org-card{background:#f8f8f8!important;border-color:#ddd!important;}
+  .t1,.t2,.kpi-v,.al-t,.card-t,.dir-t,.info-v,.export-title{color:#222!important;}
+  .t3,.al-d,.dir-d,.kpi-l,.kpi-s,.info-k,.mg-sub,.srow-d,.org-role{color:#555!important;}
+  section{page-break-inside:avoid;}
+  body::before{display:none!important;}
+}
+</style>
+</head>
+<body>
+
+<!-- SITE HEADER (통합 네비) -->
+<header class="site-header">
+  <div class="sh-top">
+    <div class="sh-logo">
+      <div class="sh-av">박</div>
+      <div>
+        <div class="sh-title">박지현 팀장 — 브레인숲 현황 분석 허브</div>
+        <div class="sh-sub">
+          <span style="font-size:13px;font-weight:600;color:var(--r100);">⚠ 수치 자료 검증 중 · 2026.05.28 초안</span>
+          <span class="sh-badge sh-bg">자료 9건 + 주간보고서</span>
+        </div>
+      </div>
+    </div>
+    <div class="sh-right">
+      <button class="print-btn" onclick="window.print()"><i class="fa-solid fa-file-pdf"></i> PDF / 인쇄</button>
+      <span class="sh-date">v9.0 · 2026.05.28</span>
+    </div>
+  </div>
+  <div class="sh-tabs" id="shTabs">
+    <button class="stab on" onclick="go('info','this')"><i class="fa-solid fa-building"></i> 회사정보·조직도</button>
+    <button class="stab" onclick="go('onboard','this')"><i class="fa-solid fa-compass"></i> 온보딩·필요자료</button>
+    <button class="stab" onclick="go('overview','this')"><i class="fa-solid fa-chart-bar"></i> 핵심지표</button>
+    <button class="stab" onclick="go('sales3y','this')"><i class="fa-solid fa-chart-line"></i> 3개년 매출</button>
+    <button class="stab" onclick="go('channel','this')"><i class="fa-solid fa-store"></i> 채널별 매출</button>
+    <button class="stab" onclick="go('margin','this')"><i class="fa-solid fa-percent"></i> 마진분석</button>
+    <button class="stab" onclick="go('target','this')"><i class="fa-solid fa-bullseye"></i> 현실 목표</button>
+    <button class="stab" onclick="go('season','this')"><i class="fa-solid fa-calendar-days"></i> 시즌·광고</button>
+    <button class="stab" onclick="go('market','this')"><i class="fa-solid fa-magnifying-glass-chart"></i> 시장분석</button>
+    <button class="stab" onclick="go('export','this')"><i class="fa-solid fa-earth-asia"></i> 해외수출</button>
+    <button class="stab" onclick="go('alerts','this')"><i class="fa-solid fa-triangle-exclamation"></i> 이슈체크</button>
+  </div>
+</header>
+
+<div class="wrap">
+
+<!-- ① 회사정보 + 조직도 -->
+<section id="info">
+  <div class="sec-label"><i class="fa-solid fa-building"></i> 회사 기본정보 & 조직도</div>
+
+  <!-- 기본정보 + 사업구조 한 줄 -->
+  <div class="g2" style="margin-bottom:1rem;">
+    <div class="card">
+      <div class="card-t"><i class="fa-solid fa-id-card"></i> 기본 정보</div>
+      <div class="info-g">
+        <div class="info-row"><span class="info-k">회사명</span><span class="info-v">(주)브레인숲</span></div>
+        <div class="info-row"><span class="info-k">대표</span><span class="info-v">이채림</span></div>
+        <div class="info-row"><span class="info-k">대표전화</span><span class="info-v">031-777-3399</span></div>
+        <div class="info-row"><span class="info-k">고객센터</span><span class="info-v">031-777-3396·3398</span></div>
+        <div class="info-row"><span class="info-k">메일</span><span class="info-v">brainsoop@naver.com</span></div>
+        <div class="info-row"><span class="info-k">사업자번호</span><span class="info-v">370-88-00019</span></div>
+        <div class="info-row"><span class="info-k">통판번호</span><span class="info-v">2017-성남중원-0295</span></div>
+        <div class="info-row"><span class="info-k">플랫폼</span><span class="info-v">CAFE24 / brainsoop.com</span></div>
+        <div class="info-row"><span class="info-k">소재지</span><span class="info-v">성남시 중원구 둔촌대로 555 선일테크노피아 611호</span></div>
+        <div class="info-row"><span class="info-k">영업시간</span><span class="info-v">평일 09~18시 (점심 12~13시)</span></div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-t"><i class="fa-solid fa-sitemap"></i> 사업 구조</div>
+      <div style="display:flex;flex-direction:column;gap:9px;margin-bottom:12px;">
+        <div style="padding:10px 14px;background:rgba(88,69,232,.09);border-radius:9px;border:1px solid var(--bd);display:flex;align-items:center;gap:10px;">
+          <div style="font-size:18px;">🖥</div>
+          <div><div style="font-size:13px;font-weight:700;color:var(--p300)">온라인 B2C</div><div style="font-size:12px;color:var(--t3)">스마트스토어 · 쿠팡 · 자사몰</div></div>
+        </div>
+        <div style="padding:10px 14px;background:rgba(255,176,32,.08);border-radius:9px;border:1px solid var(--bda);display:flex;align-items:center;gap:10px;">
+          <div style="font-size:18px;">🏫</div>
+          <div><div style="font-size:13px;font-weight:700;color:var(--a100)">기관 B2B</div><div style="font-size:12px;color:var(--t3)">어린이집 · 유치원 · 학교장터 · 나라장터</div></div>
+        </div>
+        <div style="padding:10px 14px;background:rgba(59,109,17,.07);border-radius:9px;border:1px solid rgba(168,224,99,.2);display:flex;align-items:center;gap:10px;">
+          <div style="font-size:18px;">🤝</div>
+          <div><div style="font-size:13px;font-weight:700;color:var(--g100)">에듀 · 공구 <span style="font-size:11px;font-weight:400;color:var(--t3)">(독립 매출 채널)</span></div><div style="font-size:12px;color:var(--t3)">도매몰 · 맘카페 · 유튜버 · 인스타 · 블로거</div></div>
+        </div>
+      </div>
+      <div style="font-size:12px;color:var(--t3);line-height:1.8;">
+        • 교육기관 전문 도매 유통 기반 / 자사 PB + 해외수입(EDX 등)<br>
+        • 창고: 본사(성남 606호) + 용인창고<br>
+        • 브레인숲 에듀 프로그램 (지사장·교육원) 병행
+      </div>
+    </div>
+  </div>
+
+  <!-- 조직도 + 수신자료 -->
+  <div class="g2" style="margin-bottom:1rem;">
+    <div class="card" style="overflow-x:auto;">
+      <div class="card-t"><i class="fa-solid fa-sitemap"></i> 조직도 — 2026.05 기준</div>
+      <div style="font-size:12px;color:var(--t3);margin-bottom:16px;">재무·수입파트 제외</div>
+
+      <!-- 한 줄 가로 조직도 -->
+      <div style="display:flex;align-items:flex-start;gap:0;overflow-x:auto;padding-bottom:8px;min-width:700px;">
+
+        <!-- CEO -->
+        <div style="display:flex;flex-direction:column;align-items:center;flex-shrink:0;">
+          <div class="oc ceo" style="min-width:120px;text-align:center;">
+            <div class="oc-name">이채림 대표</div>
+            <div class="oc-title">CEO</div>
+          </div>
+        </div>
+
+        <!-- 화살표 -->
+        <div style="display:flex;align-items:center;padding:0 4px;margin-top:18px;color:var(--bd2);font-size:18px;">▶</div>
+
+        <!-- 손보혜 실장 -->
+        <div style="display:flex;flex-direction:column;align-items:center;flex-shrink:0;">
+          <div class="oc" style="min-width:110px;text-align:center;border-color:rgba(168,224,99,.3);background:rgba(59,109,17,.08);">
+            <div class="oc-name">손보혜 실장</div>
+            <div class="oc-title" style="color:var(--g100);">재무팀 (별도)</div>
+          </div>
+        </div>
+
+        <!-- 구분선 -->
+        <div style="width:1px;background:var(--bd2);height:50px;margin:10px 8px;flex-shrink:0;"></div>
+
+        <!-- 박지현 팀장 + 소속 -->
+        <div style="display:flex;flex-direction:column;align-items:flex-start;gap:6px;flex-shrink:0;">
+          <div class="oc me" style="min-width:130px;text-align:center;">
+            <div class="oc-name">박지현 팀장</div>
+            <div class="oc-title" style="color:var(--a200);">온라인 총괄</div>
+          </div>
+          <div style="display:flex;gap:5px;flex-wrap:wrap;">
+            <div class="sub-oc" style="min-width:100px;text-align:center;">
+              <div class="sub-oc-name">심규태 과장</div>
+              <div class="sub-oc-role">디자인·B2C</div>
+            </div>
+            <div class="sub-oc" style="min-width:100px;text-align:center;">
+              <div class="sub-oc-name">김민영 대리</div>
+              <div class="sub-oc-role">기관영업·CS</div>
+            </div>
+            <div class="sub-oc" style="min-width:100px;text-align:center;">
+              <div class="sub-oc-name">김승희 과장</div>
+              <div class="sub-oc-role">유통발주·마감</div>
+            </div>
+            <div class="sub-oc" style="min-width:100px;text-align:center;">
+              <div class="sub-oc-name">권희석 주임</div>
+              <div class="sub-oc-role">물류·창고</div>
+            </div>
+            <div class="sub-oc" style="min-width:100px;text-align:center;border:1px dashed rgba(168,224,99,.3);background:rgba(59,109,17,.06);">
+              <div class="sub-oc-name" style="color:var(--g100);">🔗 우현지</div>
+              <div class="sub-oc-role">외주·웹디자인</div>
+            </div>
+            <div class="sub-oc" style="min-width:100px;text-align:center;border:1px dashed rgba(255,80,80,.4);opacity:.65;">
+              <div class="sub-oc-name" style="color:var(--r100);">김보민 차장 ⚠</div>
+              <div class="sub-oc-role" style="color:var(--r100);">퇴사 예정</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 구분선 -->
+        <div style="width:1px;background:var(--bd2);height:50px;margin:10px 8px;flex-shrink:0;"></div>
+
+        <!-- 김준석 팀장 + 소속 -->
+        <div style="display:flex;flex-direction:column;align-items:flex-start;gap:6px;flex-shrink:0;">
+          <div class="oc" style="min-width:130px;text-align:center;border-color:rgba(168,224,99,.3);">
+            <div class="oc-name">김준석 팀장</div>
+            <div class="oc-title" style="color:var(--g100);">에듀 총괄 (이동 예정)</div>
+          </div>
+          <div style="display:flex;gap:5px;">
+            <div class="sub-oc" style="min-width:100px;text-align:center;">
+              <div class="sub-oc-name">차영주 소장</div>
+              <div class="sub-oc-role">에듀 교육이사</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <div style="font-size:11px;color:var(--t3);margin-top:10px;">* 모바일에서는 좌우 스크롤로 확인하세요</div>
+    </div>
+
+    <div class="card">
+      <div class="card-t"><i class="fa-solid fa-folder-open"></i> 수신 자료 파일</div>
+      <div class="file-list">
+        <div class="file"><i class="fa-solid fa-file-excel fic"></i><div class="fn">2026_채널별매출현황_0527</div><div class="fs">36KB</div><span class="fbadge pp" style="color:var(--p200)">매출</span></div>
+        <div class="file"><i class="fa-solid fa-file-excel fic"></i><div class="fn">2024_2025_3개년 채널별매출현황_0527</div><div class="fs">76KB</div><span class="fbadge pp" style="color:var(--p200)">매출</span></div>
+        <div class="file"><i class="fa-solid fa-file-excel fic a"></i><div class="fn">브레인숲_2605_소비자가격변동리스트</div><div class="fs">12KB</div><span class="fbadge pa" style="color:var(--a100)">가격</span></div>
+        <div class="file"><i class="fa-solid fa-file-excel fic"></i><div class="fn">브레인숲_기초등록_마진계산_BOM</div><div class="fs">780KB</div><span class="fbadge pr" style="color:var(--r100)">마진</span></div>
+        <div class="file"><i class="fa-solid fa-file-excel fic"></i><div class="fn">도매몰 리뉴얼_박스단위 마진계산표</div><div class="fs">24KB</div><span class="fbadge pr" style="color:var(--r100)">마진</span></div>
+        <div class="file"><i class="fa-solid fa-file-excel fic a"></i><div class="fn">2026년카달로그 (기관 상품등록)</div><div class="fs">12.8MB</div><span class="fbadge pg" style="color:var(--g100)">상품</span></div>
+        <div class="file"><i class="fa-solid fa-file-excel fic"></i><div class="fn">2026 신상품 특이사항 확인</div><div class="fs">14KB</div><span class="fbadge pg" style="color:var(--g100)">상품</span></div>
+        <div class="file"><i class="fa-solid fa-file-excel fic"></i><div class="fn">브레인숲_상품마스터_회사기본정보_1차</div><div class="fs">28KB</div><span class="fbadge pg" style="color:var(--g100)">마스터</span></div>
+        <div class="file"><i class="fa-solid fa-file-excel fic a"></i><div class="fn">브레인숲_연간시즌_연령별놀이_운영플랜_1차</div><div class="fs">30KB</div><span class="fbadge pp" style="color:var(--p200)">플랜</span></div>
+        <div class="file missing"><i class="fa-solid fa-file-circle-question fic"></i><div class="fn" style="color:var(--r100)">전품목 마진표 (이카운트 기반) — 미확보</div><div class="fs">—</div><span class="fbadge pr" style="color:var(--r100)">긴급</span></div>
+        <div class="file missing"><i class="fa-solid fa-file-circle-question fic"></i><div class="fn" style="color:var(--r100)">거래처별 단가 계약서 — 미확보</div><div class="fs">—</div><span class="fbadge pr" style="color:var(--r100)">긴급</span></div>
+        <div class="file missing"><i class="fa-solid fa-file-circle-question fic"></i><div class="fn" style="color:var(--r100)">현재고 실사 결과 (본사+용인) — 미확보</div><div class="fs">—</div><span class="fbadge pr" style="color:var(--r100)">긴급</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ② 온보딩 방향 -->
+<section id="onboard">
+  <div class="sec-label"><i class="fa-solid fa-compass"></i> 온보딩 방향 & 추가 확보 필요 자료</div>
+  <div class="g2">
+    <div>
+      <div class="dir-grid" style="margin-bottom:12px;">
+        <div class="dir"><div class="dir-n">STEP 01 · 즉시</div><div class="dir-t">상품 DB 전수 확보</div><div class="dir-d">카페24 엑셀 내보내기. 1,083종 마스터 완성 → 품절·단종 정리</div></div>
+        <div class="dir"><div class="dir-n">STEP 02 · 1주</div><div class="dir-t">가격 채널 동기화</div><div class="dir-d">42종 +10% 인상분 전 채널 반영. 마진 음수 품목 결정</div></div>
+        <div class="dir"><div class="dir-n">STEP 03 · 2주</div><div class="dir-t">채널별 수익성 분석</div><div class="dir-d">온라인·기관·에듀 채널 × 카테고리 교차 분석. 부진 품목 정리</div></div>
+        <div class="dir"><div class="dir-n">STEP 04 · 1개월</div><div class="dir-t">공구 파트너 확보</div><div class="dir-d">맘카페·유튜버·인스타·블로거 고정 파트너 3인↑. 수수료·마진 내규 확정</div></div>
+        <div class="dir"><div class="dir-n">STEP 05 · 1개월</div><div class="dir-t">기관 견적 자동화</div><div class="dir-d">카테고리별 견적서 + PDF 카탈로그. 학교장터·나라장터 점검</div></div>
+        <div class="dir"><div class="dir-n">STEP 06 · 분기</div><div class="dir-t">특판·대형건 + 해외 씨앗</div><div class="dir-d">대교·공공기관 납품 타진. 동시에 해외수출 가능성 조사 시작</div></div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-t"><i class="fa-solid fa-circle-exclamation" style="color:var(--r100)"></i> 추가 확보 필요 자료</div>
+      <div class="al-list">
+        <div class="al r"><i class="fa-solid fa-user-minus al-ic"></i><div>
+          <div class="al-t">김보민 차장 퇴사 전 인수인계 — 긴급</div>
+          <div class="al-d">• 전품목 최신 매입가 기준 마진표 (이카운트 기반)<br>• 유통발주 거래처별 결제조건·단가 계약서 원본<br>• 수입 진행 중 발주건 현황 (베트남·중국 생산 스케줄)<br>• 월마감 정산 방식·역발행·소매매출 구분 기준<br>• 카페발주건 현황 (용인창고 재고 포함)<br>• 품목코드 생성 규칙 및 ERP 입력 양식</div>
+        </div></div>
+        <div class="al r"><i class="fa-solid fa-database al-ic"></i><div>
+          <div class="al-t">카페24 상품 전체 엑셀 (938종 미확보)</div>
+          <div class="al-d">관리자 → 상품 → 엑셀 내보내기 즉시 필요</div>
+        </div></div>
+        <div class="al a"><i class="fa-solid fa-file-invoice al-ic"></i><div>
+          <div class="al-t">거래처별 공급 계약서·단가표</div>
+          <div class="al-d">아이꿈터·국민서관·두손·썬차일드·EDX 공급률·결제조건 원계약서</div>
+        </div></div>
+        <div class="al a"><i class="fa-solid fa-boxes-stacking al-ic"></i><div>
+          <div class="al-t">현재고 실사 결과 파일</div>
+          <div class="al-d">4월 재고실사 완료 기록 있음. 본사·용인창고 품목별 실재고 파일</div>
+        </div></div>
+        <div class="al a"><i class="fa-solid fa-chart-bar al-ic"></i><div>
+          <div class="al-t">연도별 채널별 마감 매출 확정 파일</div>
+          <div class="al-d">2023년 포함 최소 3개년 확정 매출 (VAT-/VAT+ 구분) 필요</div>
+        </div></div>
+        <div class="al p"><i class="fa-solid fa-ad al-ic"></i><div>
+          <div class="al-t">플랫폼별 광고비·수수료 집행 내역</div>
+          <div class="al-d">채널별 실질 수수료율 및 광고비 투자 내역 없음. 실순마진 계산 필수</div>
+        </div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ③ 핵심지표 -->
+<section id="overview">
+  <div class="sec-label"><i class="fa-solid fa-chart-bar"></i> 핵심 지표</div>
+
+  <!-- ① 먼저: 지금 우리 매출이 어디 있나 -->
+  <div style="margin-bottom:7px;font-size:12px;font-weight:700;color:var(--p400);letter-spacing:.06em;">▸ 매출 지표 — 지금 우리 어디 있나</div>
+  <div class="kpi-grid" style="margin-bottom:1.1rem;">
+    <div class="kpi a"><div class="kpi-l">2025 최종 마감 (VAT-)</div><div class="kpi-v">311,253만원</div><div class="kpi-s">약 34.2억원 마감 기준</div></div>
+    <div class="kpi p"><div class="kpi-l">2024 연간 (VAT포함)</div><div class="kpi-v">356,903만원</div><div class="kpi-s">약 35.7억원</div></div>
+    <div class="kpi p"><div class="kpi-l">2026 누계 (VAT포함)</div><div class="kpi-v">87,231만원</div><div class="kpi-s">1~5월 27일 기준 / 연환산 약 21억원</div><span class="tag tag-dn">절반 수준</span></div>
+    <div class="kpi p"><div class="kpi-l">2026 일평균 (147일)</div><div class="kpi-v">593만원</div><div class="kpi-s">2025년은 932만원 / -36%</div></div>
+    <div class="kpi p"><div class="kpi-l">2026 주간 평균</div><div class="kpi-v">4,154만원</div><div class="kpi-s">21주 기준 / VAT포함</div></div>
+    <div class="kpi a"><div class="kpi-l">2026 연간 목표 (VAT-)</div><div class="kpi-v">354,802만원</div><div class="kpi-s">회사 설정 목표 (전년 14%↑)</div><span class="tag tag-dn">현재 20%</span></div>
+  </div>
+
+  <!-- ② 동기대비 추이 — 왜 목표가 어려운지 보여주는 맥락 -->
+  <div class="card" style="margin-bottom:1.1rem;">
+    <div class="card-t"><i class="fa-solid fa-chart-line"></i> 2026년 동기대비 추이 — 현재 흐름 파악 (VAT포함 · 만원)</div>
+    <div class="tbl-wrap"><table>
+      <thead><tr><th>월</th><th class="n">2024 동월</th><th class="n">2025 동월</th><th class="n">2026 실적</th><th class="n">전년비</th><th class="n">전전년비</th><th>코멘트</th></tr></thead>
+      <tbody>
+        <tr><td>1월</td><td class="n">3억 9,326만원</td><td class="n">1억 9,769만원</td><td class="n hl">1억 4,262만원</td><td class="n" style="color:#E84040">▼-27.9%</td><td class="n" style="color:#E84040">▼-63.7%</td><td style="font-size:12px;color:var(--t3)">연초 비수기</td></tr>
+        <tr style="background:rgba(255,176,32,.04)"><td>2월</td><td class="n">3억 5,323만원</td><td class="n">5억 7,028만원</td><td class="n al">3억 4,310만원</td><td class="n" style="color:#E84040">▼-39.8%</td><td class="n" style="color:var(--g100)">≈2024 수준</td><td style="font-size:12px;color:var(--t3)">신학기 납품 / 2024와 유사</td></tr>
+        <tr><td>3월</td><td class="n">3억 6,001만원</td><td class="n">2억 8,665만원</td><td class="n hl">1억 4,400만원</td><td class="n" style="color:#E84040">▼-49.8%</td><td class="n" style="color:#E84040">▼-60.0%</td><td style="font-size:12px;color:var(--r100)">⚠ 신학기 성수기인데 목표 44%</td></tr>
+        <tr><td>4월</td><td class="n">2억 4,684만원</td><td class="n">2억 4,534만원</td><td class="n hl">1억 2,895만원</td><td class="n" style="color:#E84040">▼-47.4%</td><td class="n" style="color:#E84040">▼-47.7%</td><td style="font-size:12px;color:var(--t3)">어린이날 준비 / 37% 달성</td></tr>
+        <tr><td>5월(~27일)</td><td class="n">1억 8,496만원</td><td class="n">2억 312만원</td><td class="n hl">6,344만원</td><td class="n" style="color:#E84040">▼-68.8%</td><td class="n" style="color:#E84040">▼-65.7%</td><td style="font-size:12px;color:var(--t3)">27일까지 / 어린이날 마무리 중</td></tr>
+        <tr class="total-row"><td>1~5월 누계</td><td class="n">15억 3,830만원</td><td class="n">15억 308만원</td><td class="n" style="color:var(--a100)">8억 2,211만원</td><td class="n" style="color:#E84040;font-weight:700">▼-45.3%</td><td class="n" style="color:#E84040;font-weight:700">▼-46.5%</td><td style="font-size:12px;color:var(--r100)">전년 동기 대비 약 절반</td></tr>
+      </tbody>
+    </table></div>
+    <div style="margin-top:9px;padding:9px 12px;background:rgba(232,64,64,.06);border-radius:9px;border:1px solid rgba(255,100,100,.2);font-size:12px;color:var(--r100);">⚠ 2025년 3월도 전년비 -50% 하락. 2년 연속 하락 추세. 현재 인원·체계 그대로라면 연환산 21~25억 수준이 현실적 범위. 채널 정비·공구 확대·광고 투자가 하반기 반등의 핵심.</div>
+  </div>
+
+  <!-- ③ 그래서 목표는 — 달성률 마지막에 맥락으로 -->
+  <div class="card" style="margin-bottom:1.1rem;">
+    <div class="card-t"><i class="fa-solid fa-flag-checkered"></i> 2026년 채널별 목표 달성률 (VAT- 기준 · 주간보고서 기준)</div>
+    <div style="font-size:12px;color:var(--t3);margin-bottom:12px;">위 흐름을 감안할 때 회사 설정 목표(354,802만원 / 약 39억원)는 현재 페이스 대비 2배 이상 달성이 필요한 수치. 하반기 반전이 중요.</div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:14px;">
+      <div>
+        <div class="goal-lbl"><span>전체 목표 354,802만원</span><span>20% 달성</span></div>
+        <div class="goal-bg"><div class="goal-fill" style="width:20%;background:linear-gradient(90deg,var(--p500),var(--p400))"></div></div>
+        <div style="font-size:12px;color:var(--t3);margin-top:4px;">누계 71,162만원 달성</div>
+      </div>
+      <div>
+        <div class="goal-lbl"><span>기관 159,083만원</span><span style="color:var(--a100)">32% ← 가장 양호</span></div>
+        <div class="goal-bg"><div class="goal-fill" style="width:32%;background:linear-gradient(90deg,var(--a300),var(--a200))"></div></div>
+        <div style="font-size:12px;color:var(--t3);margin-top:4px;">누계 50,362만원 달성</div>
+      </div>
+      <div>
+        <div class="goal-lbl"><span>온라인 84,350만원</span><span>20%</span></div>
+        <div class="goal-bg"><div class="goal-fill" style="width:20%;background:var(--p400)"></div></div>
+        <div style="font-size:12px;color:var(--t3);margin-top:4px;">누계 17,090만원 달성</div>
+      </div>
+      <div>
+        <div class="goal-lbl"><span>에듀 42,309만원</span><span style="color:var(--r100)">9% ⚠ 최저</span></div>
+        <div class="goal-bg"><div class="goal-fill" style="width:9%;background:#E84040"></div></div>
+        <div style="font-size:12px;color:var(--r100);margin-top:4px;">누계 3,710만원 — 공구 독립채널화 시급</div>
+      </div>
+    </div>
+  </div>
+
+  <div style="margin-bottom:7px;font-size:12px;font-weight:700;color:var(--a300);letter-spacing:.06em;">▸ 상품 지표</div>
+  <div class="kpi-grid">
+    <div class="kpi a"><div class="kpi-l">전체 등록 상품</div><div class="kpi-v">1,083종</div><div class="kpi-s">공식몰 상품보기 기준</div></div>
+    <div class="kpi a"><div class="kpi-l">세트 상품</div><div class="kpi-v">48종</div><div class="kpi-s">수집본 내 추출 (B2B 핵심)</div></div>
+    <div class="kpi r"><div class="kpi-l">품절·이슈 상품</div><div class="kpi-v">86종</div><div class="kpi-s">품절 27종 + 단종·구성변경 59종</div><span class="tag tag-dn">즉시 조치</span></div>
+    <div class="kpi a"><div class="kpi-l">가격인상 품목</div><div class="kpi-v">42종</div><div class="kpi-s">평균 +10% / 2026.05 적용</div><span class="tag tag-dn">채널 동기화</span></div>
+    <div class="kpi p"><div class="kpi-l">카테고리</div><div class="kpi-v">8개</div><div class="kpi-s">언어/퍼즐~보드게임</div></div>
+    <div class="kpi p"><div class="kpi-l">미확보 상품 DB</div><div class="kpi-v">938종</div><div class="kpi-s">카페24 전수 내보내기 필요</div><span class="tag tag-dn">미확보</span></div>
+  </div>
+</section>
+
+<!-- ④ 3개년 매출 -->
+<section id="sales3y">
+  <div class="sec-label"><i class="fa-solid fa-chart-line"></i> 3개년 채널별 매출 현황 (VAT포함 · 만원)</div>
+  <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:1rem;margin-bottom:1.1rem;">
+    <div class="card">
+      <div class="card-t"><i class="fa-solid fa-calendar"></i> 2024년 연간</div>
+      <table><thead><tr><th>월</th><th class="n">수량</th><th class="n">공급가</th><th class="n">VAT포함</th></tr></thead>
+      <tbody>
+        <tr><td>1월</td><td class="n">13,904</td><td class="n">2억 4,995만</td><td class="n hl">3억 9,326만</td></tr>
+        <tr><td>2월</td><td class="n">7,967</td><td class="n">2억 1,756만</td><td class="n hl">3억 5,323만</td></tr>
+        <tr><td>3월</td><td class="n">18,133</td><td class="n">1억 9,072만</td><td class="n hl">3억 6,001만</td></tr>
+        <tr><td>4월</td><td class="n">12,976</td><td class="n">1억 6,411만</td><td class="n hl">2억 4,684만</td></tr>
+        <tr><td>5월</td><td class="n">6,327</td><td class="n">1억 3,623만</td><td class="n hl">1억 8,496만</td></tr>
+        <tr><td>6월</td><td class="n">6,726</td><td class="n">1억 7,275만</td><td class="n hl">2억 4,091만</td></tr>
+        <tr><td>7월</td><td class="n">9,710</td><td class="n">1억 3,802만</td><td class="n hl">2억 2,785만</td></tr>
+        <tr><td>8월</td><td class="n">12,450</td><td class="n">1억 6,776만</td><td class="n hl">2억 4,211만</td></tr>
+        <tr><td>9월</td><td class="n">12,328</td><td class="n">1억 4,579만</td><td class="n hl">3억 3,008만</td></tr>
+        <tr><td>10월</td><td class="n">16,632</td><td class="n">2억 2,436만</td><td class="n hl">3억 1,660만</td></tr>
+        <tr><td>11월</td><td class="n">9,249</td><td class="n">2억 2,818만</td><td class="n hl">3억 832만</td></tr>
+        <tr><td>12월</td><td class="n">10,409</td><td class="n">2억 4,866만</td><td class="n hl">3억 6,486만</td></tr>
+        <tr class="total-row"><td>합계</td><td class="n">146,811</td><td class="n">22억 8,509만</td><td class="n al">35억 6,903만</td></tr>
+      </tbody></table>
+    </div>
+    <div class="card">
+      <div class="card-t"><i class="fa-solid fa-calendar"></i> 2025년 연간</div>
+      <table><thead><tr><th>월</th><th class="n">수량</th><th class="n">공급가</th><th class="n">VAT포함</th></tr></thead>
+      <tbody>
+        <tr><td>1월</td><td class="n">5,681</td><td class="n">1억 3,735만</td><td class="n hl">1억 9,769만</td></tr>
+        <tr><td>2월</td><td class="n">14,136</td><td class="n">3억 1,834만</td><td class="n hl">5억 7,028만</td></tr>
+        <tr><td>3월</td><td class="n">9,639</td><td class="n">2억 624만</td><td class="n hl">2억 8,665만</td></tr>
+        <tr><td>4월</td><td class="n">9,715</td><td class="n">1억 6,458만</td><td class="n hl">2억 4,534만</td></tr>
+        <tr><td>5월</td><td class="n">8,216</td><td class="n">1억 4,686만</td><td class="n hl">2억 312만</td></tr>
+        <tr><td>6월</td><td class="n">4,827</td><td class="n">1억 4,043만</td><td class="n hl">1억 8,050만</td></tr>
+        <tr><td>7월</td><td class="n">5,400</td><td class="n">1억 4,214만</td><td class="n hl">1억 8,282만</td></tr>
+        <tr><td>8월</td><td class="n">6,203</td><td class="n">8,398만</td><td class="n hl">1억 2,172만</td></tr>
+        <tr><td>9월</td><td class="n">8,129</td><td class="n">1억 2,798만</td><td class="n hl">1억 9,087만</td></tr>
+        <tr><td>10월</td><td class="n">5,034</td><td class="n">1억 541만</td><td class="n hl">1억 6,276만</td></tr>
+        <tr><td>11월</td><td class="n">5,064</td><td class="n">1억 3,602만</td><td class="n hl">2억 8,152만</td></tr>
+        <tr style="background:rgba(232,64,64,.05)"><td>12월</td><td class="n">9,377</td><td class="n" style="color:var(--r100)">6억 7,379만 ⚠</td><td class="n" style="color:var(--r100)">7억 7,676만</td></tr>
+        <tr class="total-row"><td>합계</td><td class="n">91,421</td><td class="n">23억 8,312만</td><td class="n al">34억 3만</td></tr>
+      </tbody></table>
+    </div>
+    <div class="card">
+      <div class="card-t"><i class="fa-solid fa-calendar"></i> 2026년 (1~5월)</div>
+      <table><thead><tr><th>월</th><th class="n">수량</th><th class="n">공급가</th><th class="n">VAT포함</th></tr></thead>
+      <tbody>
+        <tr><td>1월</td><td class="n">5,648</td><td class="n">8,813만</td><td class="n hl">1억 4,262만</td></tr>
+        <tr style="background:rgba(255,176,32,.04)"><td>2월</td><td class="n">6,149</td><td class="n" style="color:var(--a100)">3억 1,265만 ⚠</td><td class="n al">3억 4,310만</td></tr>
+        <tr><td>3월</td><td class="n">5,986</td><td class="n">1억 3,229만</td><td class="n hl">1억 4,400만</td></tr>
+        <tr><td>4월</td><td class="n">6,514</td><td class="n">1억 1,800만</td><td class="n hl">1억 2,895만</td></tr>
+        <tr><td>5월(~27)</td><td class="n">2,669</td><td class="n">5,835만</td><td class="n hl">6,344만</td></tr>
+        <tr class="total-row" style="background:rgba(255,176,32,.09)!important"><td style="color:var(--a100)">누계</td><td class="n" style="color:var(--a100)">26,966</td><td class="n" style="color:var(--a100)">7억 942만</td><td class="n" style="color:var(--a100);font-size:14px">8억 7,231만</td></tr>
+      </tbody></table>
+      <div style="margin-top:8px;padding:8px 10px;background:rgba(88,69,232,.07);border-radius:8px;font-size:12px;color:var(--t2);border:1px solid var(--bd);">
+        <strong style="color:var(--p300)">3개년 합계:</strong> 수량 265,198개 / 공급가 53억 7,763만원 / VAT포함 78억 4,137만원
+      </div>
+    </div>
+  </div>
+  <div class="g2">
+    <div class="card">
+      <div class="card-t"><i class="fa-solid fa-chart-column"></i> 월별 3개년 비교 (VAT포함 · 만원)</div>
+      <div class="lgd"><div class="lgd-i"><div class="lgd-dot" style="background:#7B6FFF"></div>2024</div><div class="lgd-i"><div class="lgd-dot" style="background:#FFB020"></div>2025</div><div class="lgd-i"><div class="lgd-dot" style="background:#5DCAA5"></div>2026</div></div>
+      <div class="ch-wrap ch270"><canvas id="chart3y"></canvas></div>
+    </div>
+    <div class="card">
+      <div class="card-t"><i class="fa-solid fa-wave-square"></i> 성수기 히트맵 + 연간 요약</div>
+      <div style="display:grid;grid-template-columns:repeat(12,1fr);gap:3px;margin-bottom:6px;">
+        <div style="text-align:center;font-size:10px;color:var(--t3)">1</div><div style="text-align:center;font-size:10px;color:var(--t3)">2</div><div style="text-align:center;font-size:10px;color:var(--t3)">3</div><div style="text-align:center;font-size:10px;color:var(--t3)">4</div><div style="text-align:center;font-size:10px;color:var(--t3)">5</div><div style="text-align:center;font-size:10px;color:var(--t3)">6</div><div style="text-align:center;font-size:10px;color:var(--t3)">7</div><div style="text-align:center;font-size:10px;color:var(--t3)">8</div><div style="text-align:center;font-size:10px;color:var(--t3)">9</div><div style="text-align:center;font-size:10px;color:var(--t3)">10</div><div style="text-align:center;font-size:10px;color:var(--t3)">11</div><div style="text-align:center;font-size:10px;color:var(--t3)">12</div>
+        <div id="hm1"></div><div id="hm2"></div><div id="hm3"></div><div id="hm4"></div><div id="hm5"></div><div id="hm6"></div><div id="hm7"></div><div id="hm8"></div><div id="hm9"></div><div id="hm10"></div><div id="hm11"></div><div id="hm12"></div>
+      </div>
+      <div style="font-size:11px;color:var(--t3);margin-bottom:14px;">■ 2024+2025 평균 기준 / 진할수록 성수기</div>
+      <table><thead><tr><th>연도</th><th class="n">총수량</th><th class="n">공급가</th><th class="n">VAT포함</th><th class="n">일평균</th></tr></thead>
+      <tbody>
+        <tr><td><span class="pill pp">2024</span></td><td class="n">146,811</td><td class="n">22억 8,509만</td><td class="n hl">35억 6,903만</td><td class="n">978만원</td></tr>
+        <tr><td><span class="pill pa">2025</span></td><td class="n">91,421</td><td class="n">23억 8,312만</td><td class="n hl">34억 3만</td><td class="n">932만원</td></tr>
+        <tr><td><span class="pill pg">2026(~5월)</span></td><td class="n">26,966</td><td class="n">7억 942만</td><td class="n al">8억 7,231만</td><td class="n">593만원</td></tr>
+      </tbody></table>
+    </div>
+  </div>
+</section>
+
+<!-- ⑤ 채널별 -->
+<section id="channel">
+  <div class="sec-label"><i class="fa-solid fa-store"></i> 채널별 매출 — 온라인·기관·에듀 3채널 독립</div>
+  <div style="margin-bottom:9px;padding:9px 13px;background:rgba(88,69,232,.07);border-radius:9px;border:1px solid var(--bd);font-size:12px;color:var(--t3);">
+    <strong style="color:var(--p200)">온라인(B2C)</strong> · <strong style="color:var(--a100)">기관(B2B)</strong> · <strong style="color:var(--g100)">에듀·공구</strong> — 3개 독립 채널. 온라인 안에 기관·에듀 포함되지 않음. <strong style="color:var(--g100)">공구는 에듀 확장 수단이 아닌 독립 매출 채널</strong>로 운영.
+  </div>
+  <div class="card" style="margin-bottom:1.1rem;">
+    <div class="card-t"><i class="fa-solid fa-calendar-check"></i> 2026년 채널별 (1~5월 27일 · 만원)</div>
+    <div class="tbl-wrap"><table>
+      <thead><tr><th>채널</th><th>구분</th><th class="n">수량</th><th class="n">공급가</th><th class="n">VAT포함</th><th class="n">비중</th></tr></thead>
+      <tbody>
+        <tr class="ch-a"><td style="font-weight:700;color:var(--p300)"><span class="pill pp">온라인 B2C</span></td><td style="font-size:12px;color:var(--t3)">스마트스토어·쿠팡·자사몰</td><td class="n" style="font-weight:700">11,233</td><td class="n">4억 2,803만</td><td class="n hl" style="font-size:14px;font-weight:700">4억 7,083만</td><td class="n">54.0%</td></tr>
+        <tr><td style="padding-left:16px;font-size:12px;color:var(--t3)">└ 스마트스토어</td><td style="font-size:12px;color:var(--t3)">네이버</td><td class="n">5,648</td><td class="n">2억 3,542만</td><td class="n">2억 5,896만</td><td class="n">29.7%</td></tr>
+        <tr><td style="padding-left:16px;font-size:12px;color:var(--t3)">└ 오픈마켓(쿠팡 등)</td><td style="font-size:12px;color:var(--t3)">쿠팡·11번가</td><td class="n">3,832</td><td class="n">1억 3,474만</td><td class="n">1억 4,822만</td><td class="n">17.0%</td></tr>
+        <tr><td style="padding-left:16px;font-size:12px;color:var(--t3)">└ 자사몰</td><td style="font-size:12px;color:var(--t3)">brainsoop.com</td><td class="n">1,753</td><td class="n">5,787만</td><td class="n">6,365만</td><td class="n">7.3%</td></tr>
+        <tr class="ch-b"><td style="font-weight:700;color:var(--a100)"><span class="pill pa">기관 B2B</span></td><td style="font-size:12px;color:var(--t3)">어린이집·유치원·학교</td><td class="n" style="font-weight:700">9,072</td><td class="n">1억 8,596만</td><td class="n al" style="font-size:14px;font-weight:700">2억 456만</td><td class="n">23.5%</td></tr>
+        <tr><td style="padding-left:16px;font-size:12px;color:var(--t3)">└ 기관 직납</td><td style="font-size:12px;color:var(--t3)">견적·카탈로그</td><td class="n">5,648</td><td class="n">1억 1,158만</td><td class="n">1억 2,274만</td><td class="n">14.1%</td></tr>
+        <tr><td style="padding-left:16px;font-size:12px;color:var(--t3)">└ 학교장터·나라장터</td><td style="font-size:12px;color:var(--t3)">공공조달</td><td class="n">3,424</td><td class="n">7,438만</td><td class="n">8,182만</td><td class="n">9.4%</td></tr>
+        <tr class="ch-c"><td style="font-weight:700;color:var(--g100)"><span class="pill pg">에듀·공구</span></td><td style="font-size:12px;color:var(--t3)">도매·공구·맘카페·인플루언서</td><td class="n" style="font-weight:700">6,661</td><td class="n">9,543만</td><td class="n gl" style="font-size:14px;font-weight:700">1억 497만</td><td class="n">12.0%</td></tr>
+        <tr><td style="padding-left:16px;font-size:12px;color:var(--t3)">└ 도매몰(박스단위)</td><td style="font-size:12px;color:var(--t3)">대량판매</td><td class="n">4,187</td><td class="n">6,180만</td><td class="n">6,798만</td><td class="n">7.8%</td></tr>
+        <tr><td style="padding-left:16px;font-size:12px;color:var(--t3)">└ 공구·총판</td><td style="font-size:12px;color:var(--t3)">맘카페·유튜버·인스타·블로거</td><td class="n">2,474</td><td class="n">3,363만</td><td class="n">3,699만</td><td class="n">4.2%</td></tr>
+        <tr class="total-row"><td colspan="2">2026 누계 합계</td><td class="n" style="color:var(--p200)">26,966</td><td class="n" style="color:var(--p200)">7억 942만</td><td class="n" style="color:var(--a100);font-size:15px">8억 7,231만</td><td class="n" style="color:var(--a100)">100%</td></tr>
+      </tbody>
+    </table></div>
+  </div>
+  <div class="g2">
+    <div class="card">
+      <div class="card-t"><i class="fa-solid fa-chart-bar"></i> 연도별 채널 구성 비교</div>
+      <div class="lgd"><div class="lgd-i"><div class="lgd-dot" style="background:#7B6FFF"></div>온라인</div><div class="lgd-i"><div class="lgd-dot" style="background:#FFB020"></div>기관</div><div class="lgd-i"><div class="lgd-dot" style="background:#5DCAA5"></div>에듀·공구</div></div>
+      <div class="ch-wrap ch240"><canvas id="chartCh"></canvas></div>
+    </div>
+    <div class="card">
+      <div class="card-t"><i class="fa-solid fa-heartbeat"></i> 채널 컨디션 (주간보고서)</div>
+      <table><thead><tr><th>채널</th><th>상태</th><th class="n">달성률</th><th>이슈</th></tr></thead>
+      <tbody>
+        <tr><td><span class="pill pp">스마트스토어</span></td><td><span class="pill pg">운영중</span></td><td class="n">20%</td><td style="font-size:12px;color:var(--t3)">상품정리·옵션수정 중</td></tr>
+        <tr><td><span class="pill pp">쿠팡</span></td><td><span class="pill pa">정비중</span></td><td class="n">20%</td><td style="font-size:12px;color:var(--r100)">역마진 수정 필요</td></tr>
+        <tr><td><span class="pill pp">자사몰(기관)</span></td><td><span class="pill pg">운영중</span></td><td class="n">32%</td><td style="font-size:12px;color:var(--t3)">패밀리페스타 ~5/31</td></tr>
+        <tr><td><span class="pill pa">아이스크림몰</span></td><td><span class="pill pa">입점중</span></td><td class="n">—</td><td style="font-size:12px;color:var(--t3)">2차 리스트 정리 중</td></tr>
+        <tr><td><span class="pill pa">키드키즈</span></td><td><span class="pill pg">기획전</span></td><td class="n">—</td><td style="font-size:12px;color:var(--t3)">여름 얼리버드 ~6/30</td></tr>
+        <tr><td><span class="pill pg">학교장터</span></td><td><span class="pill pg">입점완료</span></td><td class="n">—</td><td style="font-size:12px;color:var(--t3)">상품 순차 업로드 중</td></tr>
+        <tr><td><span class="pill pg">토스쇼핑</span></td><td><span class="pill pa">업로드중</span></td><td class="n">—</td><td style="font-size:12px;color:var(--t3)">프로모션 파악 중</td></tr>
+        <tr><td><span class="pill pg">에듀·공구</span></td><td><span class="pill pn">기획중</span></td><td class="n" style="color:var(--r100)">9%</td><td style="font-size:12px;color:var(--r100)">최저 채널 · 집중 필요</td></tr>
+      </tbody></table>
+    </div>
+  </div>
+</section>
+
+<!-- ⑥ 마진 -->
+<section id="margin">
+  <div class="sec-label"><i class="fa-solid fa-percent"></i> 카테고리별 마진율 분석</div>
+  <div class="g2">
+    <div class="card">
+      <div class="card-t"><i class="fa-solid fa-chart-pie"></i> 카테고리별 평균 마진율</div>
+      <div class="mg-card"><div class="mg-cat">수학놀이 (EDX · 자사브랜드)</div><div style="display:flex;align-items:center;gap:9px"><div class="mg-bar-bg"><div class="mg-bar-fill" style="width:67%;background:var(--p400)"></div></div><div class="mg-val" style="color:var(--p200)">약 67%</div></div><div class="mg-sub">링커레일어드벤스240 — 마진율 76.7%, 실마진 3만 9,486원</div></div>
+      <div class="mg-card"><div class="mg-cat">조작·쌓기 (EDX)</div><div style="display:flex;align-items:center;gap:9px"><div class="mg-bar-bg"><div class="mg-bar-fill" style="width:65%;background:var(--p400)"></div></div><div class="mg-val" style="color:var(--p200)">약 65%</div></div><div class="mg-sub">소근육트위져 71.5% / 멀티연결큐브250 50% — 판관비15% 시 실마진 -3,270원</div></div>
+      <div class="mg-card"><div class="mg-cat">자사 브랜드 세트 (카달로그)</div><div style="display:flex;align-items:center;gap:9px"><div class="mg-bar-bg"><div class="mg-bar-fill" style="width:55%;background:var(--a200)"></div></div><div class="mg-val" style="color:var(--a100)">약 55%</div></div><div class="mg-sub">맥브레인 프로빌더 66% 최고 / 프리미엄자석블럭64 42% 최저</div></div>
+      <div class="mg-card"><div class="mg-cat">보드게임 (브레인메이커)</div><div style="display:flex;align-items:center;gap:9px"><div class="mg-bar-bg"><div class="mg-bar-fill" style="width:45%;background:var(--a200)"></div></div><div class="mg-val" style="color:var(--a100)">약 45%</div></div><div class="mg-sub">평균 판매가 5만 4천원 / 공구·세트 구성 시 수익성 개선 가능</div></div>
+      <div class="mg-card"><div class="mg-cat">시설교구·역할놀이</div><div style="display:flex;align-items:center;gap:9px"><div class="mg-bar-bg"><div class="mg-bar-fill" style="width:35%;background:var(--g100)"></div></div><div class="mg-val" style="color:var(--g100)">약 35%</div></div><div class="mg-sub">단가 높아 절대마진 크지만 율 낮음 / B2B 고단가 특판 유리</div></div>
+      <div style="margin-top:10px;padding:10px 12px;background:rgba(232,64,64,.06);border-radius:9px;border:1px solid rgba(255,100,100,.18);font-size:12px;color:var(--r100);">⚠ 마진 음수 주의: 멀티연결큐브250 실마진 -3,270원 / 랭킹큐브100 보관함 판관비 20% 시 적자 / 출고가 미입력 EDX 품목 다수</div>
+    </div>
+    <div class="card">
+      <div class="card-t"><i class="fa-solid fa-table"></i> 채널별 실제 수익 구조</div>
+      <table><thead><tr><th>채널</th><th class="n">소비자가 마진율</th><th class="n">판관비 후</th><th>특이사항</th></tr></thead>
+      <tbody>
+        <tr><td><span class="pill pp">온라인B2C</span></td><td class="n hl">50~67%</td><td class="n">10~35%</td><td style="font-size:12px;color:var(--t3)">광고비·수수료 10~15% 차감</td></tr>
+        <tr><td><span class="pill pa">기관B2B</span></td><td class="n al">30~55%</td><td class="n">15~30%</td><td style="font-size:12px;color:var(--t3)">공급률 50~60% / 안정 반복</td></tr>
+        <tr><td><span class="pill pg">도매·공구</span></td><td class="n gl">20~35%</td><td class="n">10~20%</td><td style="font-size:12px;color:var(--t3)">입고가+30% 기준</td></tr>
+        <tr><td><span class="pill pa">특판·대형건</span></td><td class="n" style="color:var(--p200)">협의</td><td class="n">15~25%</td><td style="font-size:12px;color:var(--t3)">대교·공공기관 물량 우선</td></tr>
+      </tbody></table>
+      <div style="margin-top:12px;padding:10px 12px;background:rgba(168,224,99,.06);border-radius:9px;border:1px solid rgba(168,224,99,.2);font-size:12px;color:var(--g100);">
+        ✅ <strong>고마진 추천 SKU:</strong><br>
+        링커레일어드벤스240 — 마진율 76.7%, 실마진 3만 9,486원<br>
+        유아매쓰보드83p — 마진율 77.3%, 실마진 2만 8,627원<br>
+        맥브레인 프로빌더 — 50% 공급 마진율 66%<br>
+        분수링6종 — 마진율 77.2%, 가성비 우수
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ⑦ 목표 -->
+<section id="target">
+  <div class="sec-label"><i class="fa-solid fa-bullseye"></i> 현실적 매출 목표 설정</div>
+
+  <!-- 현실 기반 전제 -->
+  <div style="margin-bottom:1rem;padding:12px 15px;background:rgba(88,69,232,.07);border-radius:11px;border:1px solid var(--bd);">
+    <div style="font-size:13px;font-weight:700;color:var(--p200);margin-bottom:6px;">📌 목표 설정 전제 — 현재 상황을 솔직하게</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;font-size:12px;color:var(--t3);line-height:1.75;">
+      <div>• 현재 인원 소수 · 온보딩 초기 · 대부분 업무 파악 중<br>• 상품 DB 938종 미확보 · 마진 음수 품목 다수<br>• 쿠팡 역마진 정리 안 된 상태에서 광고 불가</div>
+      <div>• 2026 상반기 전년비 -45% 흐름 진행 중<br>• 하반기(7~12월)가 전체 매출의 45~50% 비중<br>• 기관 성수기(11~12월) 전까지 채널 정비 완료가 목표</div>
+    </div>
+  </div>
+
+  <div class="card" style="margin-bottom:1.1rem;">
+    <div class="card-t"><i class="fa-solid fa-stairs"></i> 연간 목표 시나리오 — 현실 기반 (VAT포함)</div>
+    <div class="tbl-wrap"><table>
+      <thead><tr><th>단계</th><th>전제 조건</th><th class="n">연간 목표</th><th class="n">월 평균</th><th class="n">일 평균</th><th>가능성 판단</th></tr></thead>
+      <tbody>
+        <tr><td><span class="pill pr">현 페이스</span></td><td style="font-size:12px;color:var(--t3)">아무것도 안 바뀌면</td><td class="n" style="color:var(--r100)">21~24억원</td><td class="n">1,750~2,000만원</td><td class="n">593만원</td><td style="font-size:12px;color:var(--r100)">현재 일평균 그대로면 이 수준</td></tr>
+        <tr style="background:rgba(110,103,154,.05)"><td><span class="pill pn">현상유지</span></td><td style="font-size:12px;color:var(--t3)">채널 정비 + 품절·마진 이슈 해소</td><td class="n hl">28~30억원</td><td class="n">2,300~2,500만원</td><td class="n">770~820만원</td><td style="font-size:12px;color:var(--t3)">하반기 기관 성수기 자연 회복분</td></tr>
+        <tr style="background:rgba(88,69,232,.05)"><td><span class="pill pp">현실 목표</span></td><td style="font-size:12px;color:var(--t2)">채널 정비 + 공구 2~3개 + 광고 시작</td><td class="n hl">33~36억원</td><td class="n">2,750~3,000만원</td><td class="n">900~980만원</td><td style="font-size:12px;color:var(--t2)">2025 수준 회복. 인원 감안 현실적 최대치</td></tr>
+        <tr style="background:rgba(255,176,32,.05)"><td><span class="pill pa">도전 목표</span></td><td style="font-size:12px;color:var(--a100)">공구 5개↑ + 기관영업 확대 + 광고 본격화</td><td class="n al">40~45억원</td><td class="n">3,300~3,750만원</td><td class="n">1,100~1,230만원</td><td style="font-size:12px;color:var(--a100)">하반기 반전 성공 시 가능. 일부 채용 필요할 수 있음</td></tr>
+        <tr style="background:rgba(59,109,17,.04)"><td><span class="pill pg">중기 비전</span></td><td style="font-size:12px;color:var(--g100)">체계 안정 + 해외수출 가시화 시 (1~2년)</td><td class="n gl">55~70억원</td><td class="n">4,580~5,830만원</td><td class="n">1,500~1,900만원</td><td style="font-size:12px;color:var(--g100)">대교·해외 채널 가시화 후 현실화. 단기 목표 아님</td></tr>
+      </tbody>
+    </table></div>
+    <div style="margin-top:9px;padding:9px 12px;background:rgba(255,176,32,.06);border-radius:9px;border:1px solid var(--bda);font-size:12px;color:var(--a100);">
+      ✅ <strong>현실적 2026 목표: 33~36억원 (VAT포함)</strong> — 2025 수준 회복 후 안정화가 1차 목표. 공구 독립채널화·기관 성수기 집중·채널 정비가 선행되어야 달성 가능.
+    </div>
+  </div>
+
+  <div class="g2">
+    <div class="card">
+      <div class="card-t"><i class="fa-solid fa-chart-pie"></i> 현실 목표 달성 시 채널별 구성</div>
+      <div class="ch-wrap ch240"><canvas id="chartTarget"></canvas></div>
+      <table style="margin-top:10px;"><thead><tr><th>채널</th><th class="n">2025 마감</th><th class="n">2026 현실목표</th><th class="n">전년비</th></tr></thead>
+      <tbody>
+        <tr><td><span class="pill pp">온라인B2C</span></td><td class="n">약 16억원</td><td class="n hl">14~16억원</td><td class="n" style="color:var(--t3)">채널 정비 후 유지</td></tr>
+        <tr><td><span class="pill pa">기관B2B</span></td><td class="n">약 12억원</td><td class="n al">11~13억원</td><td class="n" style="color:var(--t3)">자연 매출 + 소폭 영업</td></tr>
+        <tr><td><span class="pill pg">에듀·공구</span></td><td class="n">약 4억원</td><td class="n gl">5~7억원</td><td class="n" style="color:var(--g100)">↑ 공구 2~3개 확보 시</td></tr>
+        <tr><td><span class="pill pn">특판·기타</span></td><td class="n">약 2억원</td><td class="n">2~3억원</td><td class="n" style="color:var(--t3)">대교 등 자연 연결</td></tr>
+        <tr class="total-row"><td>합계</td><td class="n">약 34.2억원</td><td class="n" style="color:var(--a100)">33~36억원</td><td class="n" style="color:var(--g100)">≈ 전년 수준 회복</td></tr>
+      </tbody></table>
+    </div>
+    <div class="card">
+      <div class="card-t"><i class="fa-solid fa-map-signs"></i> 하반기 반전 로드맵 (2026년 기준)</div>
+      <div style="display:flex;flex-direction:column;gap:9px;">
+        <div style="padding:10px 13px;background:rgba(88,69,232,.07);border-radius:9px;border-left:3px solid var(--p500);">
+          <div style="font-size:13px;font-weight:700;color:var(--p200);margin-bottom:5px;">6월 · 채널 정비 완료</div>
+          <div style="font-size:12px;color:var(--t3);line-height:1.8;">• 상품 DB 938종 전수 확보<br>• 쿠팡 역마진 상품 수정 + 가격인상 42종 동기화<br>• 마진 음수 품목 판매중단 결정</div>
+        </div>
+        <div style="padding:10px 13px;background:rgba(255,176,32,.07);border-radius:9px;border-left:3px solid var(--a200);">
+          <div style="font-size:13px;font-weight:700;color:var(--a100);margin-bottom:5px;">7~8월 · 공구 2~3개 확보 + 광고 시작</div>
+          <div style="font-size:12px;color:var(--t3);line-height:1.8;">• 공구 파트너 2~3인 계약 완료 (맘카페·유튜버·인스타)<br>• 네이버 브랜드검색 + 쿠팡 프로모션 집행<br>• 방학 시즌 콘텐츠 업로드</div>
+        </div>
+        <div style="padding:10px 13px;background:rgba(232,64,64,.06);border-radius:9px;border-left:3px solid #E84040;">
+          <div style="font-size:13px;font-weight:700;color:var(--r100);margin-bottom:5px;">10~11월 · 기관 성수기 집중 — 연간 승부처</div>
+          <div style="font-size:12px;color:var(--t3);line-height:1.8;">• 기관 카탈로그·견적서 완성본으로 영업 집중<br>• 학교장터·나라장터 계약 최대화<br>• 11~12월이 전체 매출의 20~25% → 여기서 결정</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ⑧ 시즌·광고 -->
+<section id="season">
+  <div class="sec-label"><i class="fa-solid fa-calendar-days"></i> 2026년 시즌 운영 플랜 & 광고 전략</div>
+  <div class="g2" style="margin-bottom:1.1rem;">
+    <div class="card">
+      <div class="card-t"><i class="fa-solid fa-fire-flame-curved"></i> 2026 월별 수요강도 & 핵심 전략</div>
+      <div class="ch-wrap ch180"><canvas id="chartSeason"></canvas></div>
+      <table style="margin-top:10px;"><thead><tr><th>월</th><th>강도</th><th>시즌명</th><th>준비시점</th></tr></thead>
+      <tbody>
+        <tr style="opacity:.5"><td>1~4월 ✓</td><td><span class="pill pn">완료</span></td><td style="font-size:12px;color:var(--t3)">신학기·어린이날 준비</td><td style="font-size:12px;color:var(--t3)">완료</td></tr>
+        <tr style="background:rgba(255,176,32,.09);border:1px solid rgba(255,176,32,.3)"><td style="font-weight:700;color:var(--a100)">5월 ← 지금</td><td><span class="pill pg">★★★★★</span></td><td style="font-size:12px;font-weight:700;color:var(--a100)">어린이날 🔥 피크</td><td style="font-size:12px;color:var(--a100)">진행 중 ⚡</td></tr>
+        <tr style="background:rgba(88,69,232,.05)"><td style="font-weight:600;color:var(--p200)">6월 → 다음</td><td><span class="pill pn">★★</span></td><td style="font-size:12px;color:var(--p200)">전환기 — 하반기 준비</td><td style="font-size:12px;color:var(--p200)">5월 말 시작 ⚡</td></tr>
+        <tr><td>7~8월</td><td><span class="pill pp">★★★★</span></td><td style="font-size:12px;color:var(--t2)">여름방학</td><td style="font-size:12px;color:var(--t3)">6월 준비</td></tr>
+        <tr><td>9~10월</td><td><span class="pill pp">★★★</span></td><td style="font-size:12px;color:var(--t2)">추석·입학탐색</td><td style="font-size:12px;color:var(--t3)">8월 준비</td></tr>
+        <tr style="background:rgba(232,64,64,.05)"><td style="font-weight:700;color:var(--a100)">11~12월</td><td><span class="pill pg">★★★★★</span></td><td style="font-size:12px;font-weight:700;color:var(--a100)">입학준비·크리스마스 🔥</td><td style="font-size:12px;color:var(--a100)">10월 ⚡</td></tr>
+      </tbody></table>
+    </div>
+    <div class="card">
+      <div class="card-t"><i class="fa-solid fa-bolt"></i> ⚡ 지금 당장 (5월 말~6월) + 광고 전략</div>
+      <div class="srow now"><div class="srow-mo">5월 말<br>마무리</div><div class="srow-d"><strong style="color:var(--a100)">어린이날 성과 분석.</strong> 패밀리페스타(~5/31) 추이 확인. C/S 마무리. 5월 월마감 준비.</div></div>
+      <div class="srow semi"><div class="srow-mo">6월<br>전환기</div><div class="srow-d">키드키즈 여름 얼리버드(~6/30) 관리. 공구 파트너 섭외 본격화. 가격인상 42종 채널 동기화. 7~8월 콘텐츠 정비.</div></div>
+      <div class="srow off"><div class="srow-mo">🔍 네이버<br>광고</div><div class="srow-d"><strong style="color:var(--t2)">브랜드검색 + 쇼핑검색광고</strong> 단계적 집행. "초등준비교구" "어린이집교구" 키워드. 내부 이해 후 진행.</div></div>
+      <div class="srow off"><div class="srow-mo">🛒 쿠팡<br>광고</div><div class="srow-d"><strong style="color:var(--t2)">프로모션·기획전 참여 집중.</strong> 역마진 상품 수정 먼저. 로켓그로스 등록 완료 후 광고 검토.</div></div>
+      <div class="srow off"><div class="srow-mo">📱 메타<br>광고</div><div class="srow-d"><strong style="color:var(--t2)">콘텐츠 광고 메인 채널.</strong> 발달명분 타겟팅. 인스타 피드 주2회 꾸준히. 공구 기획전 연계 콘텐츠.</div></div>
+      <div class="srow off"><div class="srow-mo">🤝 공구<br>독립채널</div><div class="srow-d"><strong style="color:var(--g100)">공구는 독립 매출 채널.</strong> 맘카페·유튜버·인스타·블로거 — 브레인숲 상품과 잘 맞는 파트너 발굴. 로지코·피코블록·스마트코딩8종 공구 진행 중.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ⑨ 시장분석 -->
+<section id="market">
+  <div class="sec-label"><i class="fa-solid fa-magnifying-glass-chart"></i> 시장 분석 & 1년 매출 루틴</div>
+  <div class="g2">
+    <div class="card">
+      <div class="card-t"><i class="fa-solid fa-globe"></i> 시장 현황</div>
+      <div class="al-list">
+        <div class="al p"><i class="fa-solid fa-chart-line al-ic"></i><div><div class="al-t">글로벌 유아교육 시장 연 8.4% 성장</div><div class="al-d">2024년 2,589억달러 → 2033년 5,369억달러. 아시아태평양 선도. 놀이기반 학습 수요 확대</div></div></div>
+        <div class="al a"><i class="fa-solid fa-won-sign al-ic"></i><div><div class="al-t">국내 유아교구 5조원 돌파 — 골드키즈 트렌드</div><div class="al-d">1아이당 지출 집중. 온라인 유아용품 연 12.1% 성장. 프리미엄·세트 수요 확대</div></div></div>
+        <div class="al g"><i class="fa-solid fa-building-columns al-ic"></i><div><div class="al-t">기관(B2B) 안정적 반복 구매 구조</div><div class="al-d">예산 사이클 기반. 학교장터·나라장터 등록 시 공공 후불 가능. 경쟁사: 아이꿈터·파랑새교육사</div></div></div>
+        <div class="al g"><i class="fa-solid fa-users al-ic"></i><div><div class="al-t">공구는 독립 매출 채널 — 급성장 중</div><div class="al-d">맘카페·유튜버·인스타 교구 공구 활성화. 브레인숲과 잘 맞는 파트너 발굴이 핵심. 단발 대량판매 가능하며 브랜드 인지도도 동시에 성장</div></div></div>
+        <div class="al r"><i class="fa-solid fa-baby al-ic"></i><div><div class="al-t">저출생 리스크 — 프리미엄으로 방어</div><div class="al-d">절대 아동수 감소. 그러나 1아이당 지출 증가. 고단가 세트·자사 PB가 방어 수단</div></div></div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-t"><i class="fa-solid fa-calendar-check"></i> 브레인숲 1년 매출 루틴</div>
+      <div class="srow peak"><div class="srow-mo">2~3월 🔥</div><div class="srow-d"><strong style="color:var(--a100)">최대 성수기.</strong> 신학기 기관세트 납품 집중. B2B 견적 자동화 필수. 품절 절대 금지. 11~12월에 씨앗 심어야 수확</div></div>
+      <div class="srow peak"><div class="srow-mo">5월 🔥</div><div class="srow-d"><strong style="color:var(--a100)">B2C 최고 피크.</strong> 어린이날 TOP30·패밀리페스타·공구 동시 진행</div></div>
+      <div class="srow off"><div class="srow-mo">6월 정비</div><div class="srow-d">비수기 활용: 7~8월 방학 콘텐츠·광고소재·재고 준비. 하반기 전략 수립</div></div>
+      <div class="srow semi"><div class="srow-mo">7~8월 방학</div><div class="srow-d">방학 루틴 콘텐츠 + 기관 방학 프로그램 세트. "발달 명분" 마케팅</div></div>
+      <div class="srow semi"><div class="srow-mo">9~10월 전환</div><div class="srow-d">추석 전통놀이·다문화. 예비초등 예열. 11월 기관 견적 준비 시작 — 다음해 매출 씨앗</div></div>
+      <div class="srow peak"><div class="srow-mo">11~12월 🔥</div><div class="srow-d"><strong style="color:var(--a100)">입학준비·크리스마스·기관 연말예산.</strong> 취학통지 메시지 연계. 다음해 2~3월 리드 동시 생성</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ⑩ 해외수출 -->
+<section id="export">
+  <div class="sec-label"><i class="fa-solid fa-earth-asia"></i> 해외수출 비전 — 회사 방향성</div>
+  <div class="export-card" style="margin-bottom:1.1rem;">
+    <div class="export-badge"><i class="fa-solid fa-globe"></i> 대표님 주도 · 진행 중</div>
+    <div class="export-title">국내 안정화와 함께, 해외는 이미 움직이고 있습니다</div>
+    <div class="export-sub">대교 협업 및 해외 채널은 대표님이 직접 추진 중입니다. 브레인숲은 EDX(대만) 공급망, 베트남·중국 생산 루트를 이미 보유하고 있어 수입에서 수출로의 전환 기반이 마련되어 있습니다. 국내 채널 안정화와 병행하여 해외 채널이 가시화되면 회사 규모의 전환점이 됩니다.</div>
+  </div>
+  <div class="g2">
+    <div class="card">
+      <div class="card-t"><i class="fa-solid fa-building"></i> 해외수출 기반 — 브레인숲이 가진 것</div>
+      <div class="al-list">
+        <div class="al g"><i class="fa-solid fa-boxes-stacking al-ic"></i><div><div class="al-t">수입 인프라 → 수출 역방향 전환 가능</div><div class="al-d">베트남·중국 생산 루트, EDX 대만 공급망 이미 보유. 구조적으로 수출 전환 가능한 상태</div></div></div>
+        <div class="al g"><i class="fa-solid fa-seedling al-ic"></i><div><div class="al-t">자사 PB 라인 — 해외 독점 공급 가능</div><div class="al-d">훈민한글·브레인메이커·클링클링 등 자체 개발 교구. 국가별 독점 에이전트 계약 대상</div></div></div>
+        <div class="al a"><i class="fa-solid fa-handshake al-ic"></i><div><div class="al-t">대교 협업 — 대표님 직접 진행 중</div><div class="al-d">대교 연계 해외 채널은 대표님 주도로 추진 중. 연결 구조 파악 후 브레인숲 상품 연계 기회 존재</div></div></div>
+        <div class="al a"><i class="fa-solid fa-chart-line al-ic"></i><div><div class="al-t">K-에듀 수요 실제로 높음</div><div class="al-d">동남아·중동·일본에서 한국 교육 교구 신뢰도 상승. 수출 현실화 시 국내 원가 절감까지 선순환</div></div></div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-t"><i class="fa-solid fa-rocket"></i> 단계별 전개 방향</div>
+      <div style="display:flex;flex-direction:column;gap:9px;">
+        <div style="padding:10px 12px;background:rgba(255,176,32,.07);border-radius:9px;border-left:3px solid var(--a200);"><div style="font-size:13px;font-weight:700;color:var(--a100);margin-bottom:4px;">현재 · 대표님 주도 진행 중</div><div style="font-size:12px;color:var(--t3);line-height:1.8;">대교 협업 및 해외 채널 구조 논의 중. 세부 내용 파악 후 팀장 역할 정의 필요</div></div>
+        <div style="padding:10px 12px;background:rgba(88,69,232,.07);border-radius:9px;border-left:3px solid var(--p500);"><div style="font-size:13px;font-weight:700;color:var(--p200);margin-bottom:4px;">국내 안정화 병행 (1년 내)</div><div style="font-size:12px;color:var(--t3);line-height:1.8;">수출 후보 PB 상품 리스트 정리 / KC인증 → 현지 인증 전환 검토 / KOTRA 수출 바우처 확인</div></div>
+        <div style="padding:10px 12px;background:rgba(59,109,17,.07);border-radius:9px;border-left:3px solid var(--g100);"><div style="font-size:13px;font-weight:700;color:var(--g100);margin-bottom:4px;">해외 채널 가시화 시 (1~2년)</div><div style="font-size:12px;color:var(--t3);line-height:1.8;">동남아 에이전트 연결 / Shopee·Amazon Global 소량 테스트 / 홍콩·도쿄·두바이 Education Fair 참가</div></div>
+        <div style="padding:10px 12px;background:rgba(88,69,232,.05);border-radius:9px;border:1px solid var(--bd);"><div style="font-size:12px;color:var(--t3);line-height:1.75;"><strong style="color:var(--p200)">팀장 역할:</strong> 대표님 진행 상황 파악 후 국내 상품·운영 체계를 해외 연동 가능한 구조로 정비. 지금은 국내 안정화 우선이며, 해외는 대표님과 방향 맞추어 진행.</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ⑪ 이슈 -->
+<section id="alerts">
+  <div class="sec-label"><i class="fa-solid fa-triangle-exclamation"></i> 이슈 체크</div>
+  <div class="al-list">
+    <div class="al r"><i class="fa-solid fa-user-minus al-ic"></i><div><div class="al-t">김보민 차장 퇴사 — 인수인계 자료 즉시 확보 필요</div><div class="al-d">마진표·거래처 단가·수입발주 현황·월마감 방식·카페발주·ERP 양식 전부 서면 인수인계 요청</div></div></div>
+    <div class="al r"><i class="fa-solid fa-xmark al-ic"></i><div><div class="al-t">1,083종 중 938종 상품 DB 미확보 — 카페24 엑셀 내보내기 즉시</div><div class="al-d">현재 수집본 145종뿐. 관리자 → 상품 → 엑셀 내보내기</div></div></div>
+    <div class="al r"><i class="fa-solid fa-xmark al-ic"></i><div><div class="al-t">단종 4종 즉시 판매 중단 / 품절 27종 입고 계획 미확인</div><div class="al-d">상상력큐브 1600/2400/3200/4000, 몬테소리가베250 단종. 랭킹큐브100 보관함 등 주력 품절</div></div></div>
+    <div class="al a"><i class="fa-solid fa-circle-exclamation al-ic"></i><div><div class="al-t">소비자가 42종 +10% 인상 — 채널 미동기화 위험</div><div class="al-d">자사몰·도매몰·기관채널 전체 반영 확인 필요</div></div></div>
+    <div class="al a"><i class="fa-solid fa-circle-exclamation al-ic"></i><div><div class="al-t">마진 음수 품목 다수 / 쿠팡 역마진 상품 수정 필요</div><div class="al-d">멀티연결큐브250 실마진 -3,270원. 쿠팡 역마진 수정 완료 전 광고 집행 금지</div></div></div>
+    <div class="al p"><i class="fa-solid fa-circle-info al-ic"></i><div><div class="al-t">파트별 인수인계 진행 중 (2026.04.30 기준)</div><div class="al-d">물류: 이관용 과장 → 권희석 주임 / 에듀: 이관용 과장 → 김승희 과장 완료</div></div></div>
+  </div>
+</section>
+
+</div>
+<footer>
+  (주)브레인숲 · 박지현 팀장 온보딩 초안 · 2026.05.28 v9.0 · 수신자료 9건 + 주간보고서 기반<br>
+  <a href="https://brainsoop.com" target="_blank" style="color:var(--p400);text-decoration:none;">brainsoop.com</a> · 사업자 370-88-00019 · 대표 이채림
+</footer>
+
+<script>
+function go(id, el){
+  document.getElementById(id)?.scrollIntoView({behavior:'smooth'});
+  document.querySelectorAll('.stab').forEach(t=>t.classList.remove('on'));
+  // 버튼 자체가 전달된 경우
+  if(el && el!=='this'){el.classList.add('on');return;}
+  // onclick에서 'this' 문자열로 전달된 경우는 event.target 사용
+  if(event && event.currentTarget) event.currentTarget.classList.add('on');
+}
+// 스크롤 감지로 탭 자동 활성화
+const sections=['info','onboard','overview','sales3y','channel','margin','target','season','market','export','alerts'];
+const tabs=document.querySelectorAll('.stab');
+window.addEventListener('scroll',()=>{
+  let cur='info';
+  sections.forEach(id=>{
+    const el=document.getElementById(id);
+    if(el && el.getBoundingClientRect().top<=120) cur=id;
+  });
+  tabs.forEach((t,i)=>{
+    t.classList.toggle('on', sections[i]===cur);
+  });
+},{passive:true});
+
+Chart.defaults.color='#6E679A';
+Chart.defaults.font.family='Noto Sans KR';
+const mo=['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'];
+
+// 히트맵
+const a24=[39326,35323,36001,24684,18496,24091,22785,24211,33008,31660,30832,36486];
+const a25=[19769,57028,28665,24534,20312,18050,18282,12172,19087,16276,28152,77676];
+const avg=a24.map((v,i)=>(v+a25[i])/2);
+const mx=Math.max(...avg);
+for(let i=1;i<=12;i++){
+  const el=document.getElementById('hm'+i);
+  if(!el)continue;
+  const r=avg[i-1]/mx;
+  const R=Math.round(88+(232-88)*r),G=Math.round(69+(64-69)*r),B=Math.round(232+(232-232)*r);
+  el.style.cssText=`background:rgba(${R},${G},${B},${.2+r*.7});height:20px;border-radius:3px;`;
+  el.title=`${i}월 평균 ${Math.round(avg[i-1]/10000*10)/10}억원`;
+}
+
+// 3개년
+new Chart(document.getElementById('chart3y'),{type:'bar',
+  data:{labels:mo,datasets:[
+    {label:'2024',data:a24,backgroundColor:'rgba(123,111,255,.65)',borderRadius:3,borderSkipped:false},
+    {label:'2025',data:a25,backgroundColor:'rgba(255,176,32,.65)',borderRadius:3,borderSkipped:false},
+    {label:'2026',data:[14262,34310,14400,12895,6344,null,null,null,null,null,null,null],backgroundColor:'rgba(93,202,165,.8)',borderRadius:3,borderSkipped:false},
+  ]},
+  options:{responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>`${c.dataset.label}: ${(c.raw/10000).toFixed(1)}억원`}}},
+    scales:{y:{beginAtZero:true,ticks:{callback:v=>(v/10000).toFixed(0)+'억',color:'#6E679A',font:{size:11}},grid:{color:'rgba(123,111,255,.07)'}},x:{ticks:{color:'#6E679A',font:{size:11}},grid:{display:false}}}}
+});
+
+// 채널
+new Chart(document.getElementById('chartCh'),{type:'bar',
+  data:{labels:['2024','2025','2026(~5월)'],datasets:[
+    {label:'온라인B2C',data:[244000,233000,47083],backgroundColor:'rgba(123,111,255,.75)',borderRadius:4,borderSkipped:false},
+    {label:'기관B2B',data:[71000,68000,20456],backgroundColor:'rgba(255,176,32,.75)',borderRadius:4,borderSkipped:false},
+    {label:'에듀·공구',data:[42000,39000,10497],backgroundColor:'rgba(93,202,165,.75)',borderRadius:4,borderSkipped:false},
+  ]},
+  options:{responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>`${c.dataset.label}: ${(c.raw/10000).toFixed(1)}억원`}}},
+    scales:{x:{stacked:true,ticks:{color:'#6E679A',font:{size:12}},grid:{display:false}},y:{stacked:true,beginAtZero:true,ticks:{callback:v=>(v/10000)+'억',color:'#6E679A',font:{size:11}},grid:{color:'rgba(123,111,255,.07)'}}}}
+});
+
+// 100억
+new Chart(document.getElementById('chartTarget'),{type:'doughnut',
+  data:{labels:['온라인B2C(35억)','기관B2B(30억)','에듀·공구(20억)','특판·대형건(15억)'],
+  datasets:[{data:[15,12,6,2],backgroundColor:['#7B6FFF','#FFB020','#5DCAA5','#C4BFFF'],borderWidth:2,borderColor:'#10102A'}]},
+  options:{responsive:true,maintainAspectRatio:false,cutout:'60%',
+    plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>`${c.label}`}}}}
+});
+
+// 시즌
+new Chart(document.getElementById('chartSeason'),{type:'bar',
+  data:{labels:mo,datasets:[{label:'수요강도',data:[4,5,5,3,5,2,4,3,4,3,5,5],
+    backgroundColor:['#7B6FFF','#E84040','#E84040','#FFB020','#E84040','#6E679A','#FFB020','#7B6FFF','#FFB020','#7B6FFF','#E84040','#E84040'],
+    borderRadius:4,borderSkipped:false}]},
+  options:{responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>'강도: '+c.raw+'/5'}}},
+    scales:{y:{beginAtZero:true,max:5.5,ticks:{stepSize:1,callback:v=>v>0?v+'★':'',color:'#6E679A',font:{size:11}},grid:{color:'rgba(123,111,255,.07)'}},x:{ticks:{color:'#6E679A',font:{size:11}},grid:{display:false}}}}
+});
+
+// 카테고리 바
+const cats=[
+  {n:'수학놀이',c:487,cl:'#7B6FFF'},{n:'조작/쌓기',c:407,cl:'#5845E8'},
+  {n:'언어/퍼즐',c:228,cl:'#C4BFFF'},{n:'역할놀이',c:105,cl:'#FFB020'},
+  {n:'시설교구',c:87,cl:'#FFD166'},{n:'신체활동',c:47,cl:'#5DCAA5'},
+  {n:'음률/미술',c:21,cl:'#A8E063'},{n:'보드게임',c:11,cl:'#FF8A8A'},
+];
+const catEl=document.getElementById('catBars');
+cats.forEach(c=>{
+  const pct=Math.round(c.c/487*100);
+  catEl.innerHTML+=`<div class="bar-row"><div class="bar-lbl">${c.n}</div><div class="bar-bg"><div class="bar-fill" style="width:${pct}%;background:${c.cl}"></div></div><div class="bar-val">${c.c}</div></div>`;
+});
+</script>
+</body>
+</html>
